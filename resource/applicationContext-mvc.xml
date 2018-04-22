@@ -20,8 +20,8 @@
 		<property name="contentType" value="text/html;charset=UTF-8" />
 	</bean>
 
-	<mvc:default-servlet-handler />
-	<!-- <mvc:resources location="/static/" mapping="/resource/**" /> -->
+	<mvc:default-servlet-handler/>
+<!-- 	<mvc:resources location="/static/" mapping="/resource/**" /> -->
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
