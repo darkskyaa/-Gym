@@ -1,6 +1,7 @@
 package member.service;
 
 import static util.MemberUtil.checkMember;
+import static util.Crypto.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -26,6 +27,7 @@ public class MemberService {
 		try {
 			if (resultMessage.toString().equals("")) {
 				if (memberDao.selectByAccount(member.getAccount()) == null) {
+					member.setPassword(toMD5(member.getPassword()));
 					Integer id = memberDao.insert(member);
 					if (id != null && id > 0) {
 						resultMessage.append("register success");
