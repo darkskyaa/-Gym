@@ -1,12 +1,13 @@
 package member.dao;
 
+import java.text.ParseException;
 import java.util.List;
 
 import member.pojo.MemberBean;
 
 public interface MemberDao {
 
-	public abstract Integer insert(MemberBean member);
+	public abstract Integer insert(MemberBean member) throws ParseException;
 
 	public abstract int delete(Integer id);
 

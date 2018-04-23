@@ -10,7 +10,7 @@ public class MemberBean extends CoreBean {
 	private String password;
 	private String name;
 	private Integer sex;
-	private Timestamp birthday;
+	private String birthday;
 	private String phone;
 	private String email;
 	private String addr;
@@ -60,11 +60,11 @@ public class MemberBean extends CoreBean {
 		this.sex = sex;
 	}
 
-	public Timestamp getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Timestamp birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 

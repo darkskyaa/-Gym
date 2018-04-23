@@ -1,5 +1,8 @@
 package member.dao;
 
+import static util.Constant.*;
+
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +24,7 @@ public class MemberDaoImpl implements MemberDao {
 	private SimpleJdbcInsert simpleJdbcInsert;
 	
 	@Override
-	public Integer insert(MemberBean member) {
+	public Integer insert(MemberBean member) throws ParseException {
 		simpleJdbcInsert.withTableName("MEMBER");
 		simpleJdbcInsert.usingGeneratedKeyColumns("ID");
 		simpleJdbcInsert.usingColumns(new String[] { "ACCOUNT", "PASSWORD",
@@ -32,7 +35,7 @@ public class MemberDaoImpl implements MemberDao {
 		paramMap.put("PASSWORD", member.getPassword());
 		paramMap.put("NAME", member.getName());
 		paramMap.put("SEX", member.getSex());
-		paramMap.put("BIRTHDAY", member.getBirthday());
+		paramMap.put("BIRTHDAY", STANDARD_DATE_FORMAT.parseObject(member.getBirthday()));
 		paramMap.put("PHONE", member.getPhone());
 		paramMap.put("EMAIL", member.getEmail());
 		paramMap.put("ADDR", member.getAddr());

@@ -1,17 +1,21 @@
 package member.service;
 
-import static util.MemberUtil.*;
+import static util.MemberUtil.checkMember;
+
+import java.text.ParseException;
 import java.util.List;
 
 import member.dao.MemberDao;
 import member.pojo.MemberBean;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberService {
+	private static Logger logger = Logger.getLogger(MemberService.class);
 
 	@Autowired
 	private MemberDao memberDao;
@@ -19,17 +23,22 @@ public class MemberService {
 	@Transactional
 	public String register(MemberBean member) {
 		StringBuilder resultMessage = checkMember(member, false);
-		if (resultMessage.toString().equals("")) {
-			if (memberDao.selectByAccount(member.getAccount()) == null) {
-				Integer id = memberDao.insert(member);
-				if (id != null && id > 0) {
-					resultMessage.append("register success");
+		try {
+			if (resultMessage.toString().equals("")) {
+				if (memberDao.selectByAccount(member.getAccount()) == null) {
+					Integer id = memberDao.insert(member);
+					if (id != null && id > 0) {
+						resultMessage.append("register success");
+					} else {
+						resultMessage.append("register failure");
+					}
 				} else {
-					resultMessage.append("register failure");
+					resultMessage.append("account was existed");
 				}
-			} else {
-				resultMessage.append("account was exited");
 			}
+		} catch (ParseException e) {
+			resultMessage.append("register failure");
+			logger.error(e.getMessage());
 		}
 		return resultMessage.toString(); 
 	}
