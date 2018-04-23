@@ -2,23 +2,20 @@ package member.dao;
 
 import java.util.List;
 
-import member.pojo.Member;
+import member.pojo.MemberBean;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+public interface MemberDao {
 
-@Repository
-public class MemberDao {
-	@Autowired
-	private JdbcTemplate simpleJdbc;
-	
-	public List<Member> getAll() {
-		return simpleJdbc.query("select * from MEMBER", (rs, num) -> {
-			Member member = new Member();
-			member.setId(rs.getInt(1));
-			member.setName(rs.getString(2));
-			return member;
-		});
-	}
+	public abstract Integer insert(MemberBean member);
+
+	public abstract int delete(Integer id);
+
+	public abstract int update(MemberBean member);
+
+	public abstract MemberBean selectById(Integer id);
+
+	public abstract Integer selectByAccount(String account);
+
+	public abstract List<MemberBean> getAll();
+
 }
