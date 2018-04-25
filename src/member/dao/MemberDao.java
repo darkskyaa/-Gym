@@ -16,6 +16,8 @@ public interface MemberDao {
 	public abstract MemberBean selectById(Integer id);
 
 	public abstract Integer selectByAccount(String account);
+	
+	public abstract MemberBean selectByAccountAndPassword(String account, String password);
 
 	public abstract List<MemberBean> getAll();
 

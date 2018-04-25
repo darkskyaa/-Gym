@@ -45,6 +45,11 @@ public class MemberService {
 		return resultMessage.toString(); 
 	}
 
+	public MemberBean login(String account, String password) {
+		password = toMD5(password);
+		return memberDao.selectByAccountAndPassword(account, password);
+	}
+	
 	public MemberBean selectById(Integer id) {
 		return memberDao.selectById(id);
 	}
@@ -52,5 +57,4 @@ public class MemberService {
 	public List<MemberBean> getAll() {
 		return memberDao.getAll();
 	}
-
 }

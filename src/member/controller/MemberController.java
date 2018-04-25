@@ -4,6 +4,8 @@ import static util.Constant.STANDARD_DATE_FORMAT;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import member.pojo.MemberBean;
 import member.service.MemberService;
 
@@ -38,7 +40,17 @@ public class MemberController {
 	public String register(MemberBean member) {
 		return memberService.register(member);
 	}
-
+	
+	@PostMapping("login")
+	public String login(HttpSession session, String account, String password) {
+		MemberBean member = memberService.login(account, password); 
+		if (member != null) {
+			session.setAttribute("member", member);
+			return "success";
+		} else {
+			return "failure";
+		}
+	}
 
 	@GetMapping("t1")
 	public String t1() {

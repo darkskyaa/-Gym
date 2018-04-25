@@ -79,6 +79,16 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
+	public MemberBean selectByAccountAndPassword(String account, String password) {
+		String sql = "select * from MEMBER where ACCOUNT = ? and PASSWORD = ?";
+		List<MemberBean> list = jdbcTemplate.query(sql, new Object[]{account, password}, new BeanPropertyRowMapper<MemberBean>(MemberBean.class));
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+	
+	@Override
 	public List<MemberBean> getAll() {
 		return jdbcTemplate.query("select * from MEMBER", new MemberMapper());
 	}
