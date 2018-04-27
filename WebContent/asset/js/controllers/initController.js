@@ -31,7 +31,6 @@ eApp.controller('initController', function ($scope, $http, $controller, sysInfoS
             data: [],
             param: []
         };
-        log(123);
     }
     $scope.init();
 });

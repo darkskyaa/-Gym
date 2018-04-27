@@ -38,10 +38,32 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(5rem); }
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+@keyframes example {
+  0% {
+    background-color: red;
+    left: 0px;
+    top: 0px; }
+  25% {
+    background-color: yellow;
+    left: 200px;
+    top: 0px; }
+  50% {
+    background-color: blue;
+    left: 200px;
+    top: 200px; }
+  75% {
+    background-color: green;
+    left: 0px;
+    top: 200px; }
+  100% {
+    background-color: red;
+    left: 0px;
+    top: 0px; } }
 
 *,
 *::after,
@@ -51,27 +73,48 @@ ORDER: Base + typography > general layout + grid > page layout > components
   box-sizing: inherit; }
 
 html {
+  /* 16 * 62.5 = 10 */
+  /* so 1rem = 10px if user doesn't change font-size */
   font-size: 62.5%; }
-  @media only screen and (max-width: 75em) {
-    html {
-      font-size: 56.25%; } }
-  @media only screen and (max-width: 56.25em) {
-    html {
-      font-size: 50%; } }
-  @media only screen and (min-width: 112.5em) {
-    html {
-      font-size: 75%; } }
 
 body {
-  box-sizing: border-box;
-  padding: 3rem; }
-  @media only screen and (max-width: 56.25em) {
-    body {
-      padding: 0; } }
+  box-sizing: border-box; }
 
-::selection {
-  background-color: #55c57a;
-  color: #fff; }
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*    font-size: 16px;*/
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  min-height: 100vh; }
+
+.container {
+  width: 100%;
+  height: 100%; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-style: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.75rem;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
