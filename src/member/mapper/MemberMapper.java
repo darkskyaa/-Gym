@@ -20,7 +20,6 @@ public class MemberMapper implements RowMapper<MemberBean> {
 		member.setSex(rs.getInt(5));
 		member.setBirthday(STANDARD_DATE_FORMAT.format(rs.getTimestamp(6)));
 		member.setPhone(rs.getString(7));
-		member.setEmail(rs.getString(8));
 		member.setAddr(rs.getString(9));
 		member.setPhone(rs.getString(10));
 		member.setRemark(rs.getString(11));

@@ -37,7 +37,6 @@ public class MemberDaoImpl implements MemberDao {
 		paramMap.put("SEX", member.getSex());
 		paramMap.put("BIRTHDAY", STANDARD_DATE_FORMAT.parseObject(member.getBirthday()));
 		paramMap.put("PHONE", member.getPhone());
-		paramMap.put("EMAIL", member.getEmail());
 		paramMap.put("ADDR", member.getAddr());
 		paramMap.put("PHOTO", member.getPhoto());
 		paramMap.put("REMARK", member.getRemark());

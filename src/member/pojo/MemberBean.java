@@ -12,7 +12,6 @@ public class MemberBean extends CoreBean {
 	private Integer sex;
 	private String birthday;
 	private String phone;
-	private String email;
 	private String addr;
 	private String photo;
 	private String remark;
@@ -74,14 +73,6 @@ public class MemberBean extends CoreBean {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getAddr() {

@@ -27,9 +27,6 @@ public class MemberUtil {
 		if (member.getPhone() == null) {
 			result.append("field 'phone' must be filled\n");
 		}
-		if (member.getEmail() == null) {
-			result.append("field 'email' must be filled\n");
-		}
 		return result;
 	}
 }
