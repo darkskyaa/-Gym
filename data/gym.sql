@@ -65,6 +65,25 @@ CREATE TABLE `COURSE_PRICE` (
 
 /*Data for the table `COURSE_PRICE` */
 
+/*Table structure for table `CREDIT` */
+
+DROP TABLE IF EXISTS `CREDIT`;
+
+CREATE TABLE `CREDIT` (
+  `ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '編號(PK)',
+  `CARD_TYPE` varchar(50) DEFAULT NULL COMMENT '卡別',
+  `CARD_NUMBER` varchar(50) NOT NULL COMMENT '信用卡號',
+  `EXPIRY_YEAR_MONTH` char(6) NOT NULL COMMENT '到期年月',
+  `AMOUNT` decimal(10,0) NOT NULL COMMENT '金額',
+  `CREATOR` varchar(10) NOT NULL DEFAULT 'ADMIN' COMMENT '建立者',
+  `CREATED_DATETIME` datetime DEFAULT NULL COMMENT '建立日期時間',
+  `MODIFIER` varchar(10) DEFAULT 'ADMIN' COMMENT '最後修改者',
+  `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='儲值資訊';
+
+/*Data for the table `CREDIT` */
+
 /*Table structure for table `INBODY` */
 
 DROP TABLE IF EXISTS `INBODY`;
@@ -112,14 +131,36 @@ CREATE TABLE `MEMBER` (
   `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `UK_MEMBER` (`ACCOUNT`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='會員資訊';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='會員資訊';
 
 /*Data for the table `MEMBER` */
 
 insert  into `MEMBER`(`ID`,`ACCOUNT`,`PASSWORD`,`NAME`,`SEX`,`BIRTHDAY`,`PHONE`,`EMAIL`,`ADDR`,`PHOTO`,`REMARK`,`POINT`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
-(1,'william','123456','wei ming',1,'1988-01-17 23:29:33','0980127131','ithan0117@gmail.com','新竹縣湖口鄉','d:/photo001','test1',100,'ADMIN','2018-04-21 18:15:02','ADMIN','2018-04-22 23:29:54'),
-(2,'ocean','123456','yang',1,'1992-11-19 23:29:54','0980123456','ocean@gmail.com','台北市','d:/photo002','test2',200,'ADMIN','2018-04-21 21:19:16',NULL,'2018-04-22 23:30:28'),
-(3,'johnson','123456','kuo chia',1,'1985-12-28 23:30:28','0911222333','johnson@gmail.com','新北市','d:/photo003','test3',5000,'ADMIN','2018-04-22 01:38:51',NULL,'2018-04-22 23:31:42');
+(1,'william','e10adc3949ba59abbe56e057f20f883e','wei ming',1,'1988-01-17 23:29:33','0980127131','ithan0117@gmail.com','新竹縣湖口鄉','d:/photo001','test1',100,'ADMIN','2018-04-21 18:15:02','ADMIN','2018-04-25 19:55:09'),
+(2,'ocean','e10adc3949ba59abbe56e057f20f883e','yang',1,'1992-11-19 23:29:54','0980123456','ocean@gmail.com','台北市','d:/photo002','test2',200,'ADMIN','2018-04-21 21:19:16',NULL,'2018-04-25 19:55:10'),
+(3,'johnson','e10adc3949ba59abbe56e057f20f883e','kuo chia',1,'1985-12-28 23:30:28','0911222333','johnson@gmail.com','新北市','d:/photo003','test3',5000,'ADMIN','2018-04-22 01:38:51',NULL,'2018-04-25 19:55:14'),
+(4,'帳號','密碼','Lee',1,'1988-01-17 00:00:00','0980127131','j27641662@yahoo.com.tw','台北市士林區','D:\\image005','備註',NULL,'SYSTEM','2018-04-23 13:11:49','ADMIN',NULL);
+
+/*Table structure for table `MEMBER_CREDIT` */
+
+DROP TABLE IF EXISTS `MEMBER_CREDIT`;
+
+CREATE TABLE `MEMBER_CREDIT` (
+  `ID` char(32) NOT NULL COMMENT 'UUID(PK)',
+  `MEMBER_ID` int(10) NOT NULL COMMENT '會員編號',
+  `CREDIT_ID` int(10) NOT NULL COMMENT '儲值編號',
+  `CREATOR` varchar(50) NOT NULL DEFAULT 'ADMIN' COMMENT '建立者',
+  `CREATED_DATETIME` datetime NOT NULL COMMENT '建立日期時間',
+  `MODIFIER` varchar(50) DEFAULT 'ADMIN' COMMENT '最後修改者',
+  `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
+  PRIMARY KEY (`ID`),
+  KEY `FK_MEMBER#CREDIT_MEMBER` (`MEMBER_ID`),
+  KEY `FK_MEMBER#CREDIT_CREDIT` (`CREDIT_ID`),
+  CONSTRAINT `FK_MEMBER#CREDIT_CREDIT` FOREIGN KEY (`CREDIT_ID`) REFERENCES `CREDIT` (`ID`),
+  CONSTRAINT `FK_MEMBER#CREDIT_MEMBER` FOREIGN KEY (`MEMBER_ID`) REFERENCES `MEMBER` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='關聯表 - 會員 <-> 儲值';
+
+/*Data for the table `MEMBER_CREDIT` */
 
 /*Table structure for table `MEMBER_INBODY` */
 
@@ -359,6 +400,32 @@ DELIMITER $$
 
 DELIMITER ;
 
+/* Trigger structure for table `CREDIT` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_CREDIT_BI` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_CREDIT_BI` BEFORE INSERT ON `CREDIT` FOR EACH ROW BEGIN
+	SET NEW.CREATED_DATETIME = NOW();
+    END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `CREDIT` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_CREDIT_BU` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_CREDIT_BU` BEFORE UPDATE ON `CREDIT` FOR EACH ROW BEGIN
+	SET NEW.MODIFIED_DATETIME = NOW();
+    END */$$
+
+
+DELIMITER ;
+
 /* Trigger structure for table `INBODY` */
 
 DELIMITER $$
@@ -414,6 +481,33 @@ DELIMITER $$
 	ELSE
 		SET NEW.MODIFIED_DATETIME = NOW();
 	END IF;
+    END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `MEMBER_CREDIT` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#CREDIT_BI` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#CREDIT_BI` BEFORE INSERT ON `MEMBER_CREDIT` FOR EACH ROW BEGIN
+	SET NEW.ID = REPLACE(UUID(), '-', '');
+	SET NEW.CREATED_DATETIME = NOW();
+    END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `MEMBER_CREDIT` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#CREDIT_BU` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#CREDIT_BU` BEFORE UPDATE ON `MEMBER_CREDIT` FOR EACH ROW BEGIN
+	SET NEW.MODIFIED_DATETIME = NOW();
     END */$$
 
 
