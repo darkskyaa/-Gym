@@ -35,7 +35,7 @@ public class MemberDaoImpl implements MemberDao {
 		paramMap.put("PASSWORD", member.getPassword());
 		paramMap.put("NAME", member.getName());
 		paramMap.put("SEX", member.getSex());
-		paramMap.put("BIRTHDAY", STANDARD_DATE_FORMAT.parseObject(member.getBirthday()));
+		paramMap.put("BIRTHDAY", member.getBirthday());
 		paramMap.put("PHONE", member.getPhone());
 		paramMap.put("ADDR", member.getAddr());
 		paramMap.put("PHOTO", member.getPhoto());
@@ -60,7 +60,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public MemberBean selectById(Integer id) {
 		String sql = "select * from MEMBER where ID = ?";
-		List<MemberBean> list = jdbcTemplate.query(sql, new Object[]{id}, new BeanPropertyRowMapper<MemberBean>(MemberBean.class)); 
+		List<MemberBean> list = jdbcTemplate.query(sql, new Object[]{id}, new MemberMapper()); 
 		if (list != null && list.size() > 0) {
 			return list.get(0);
 		}
