@@ -1,7 +1,5 @@
 package member.dao;
 
-import static util.Constant.*;
-
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +26,7 @@ public class MemberDaoImpl implements MemberDao {
 		simpleJdbcInsert.withTableName("MEMBER");
 		simpleJdbcInsert.usingGeneratedKeyColumns("ID");
 		simpleJdbcInsert.usingColumns(new String[] { "ACCOUNT", "PASSWORD",
-				"NAME", "SEX", "BIRTHDAY", "PHONE", "EMAIL", "ADDR", "PHOTO",
+				"NAME", "SEX", "BIRTHDAY", "PHONE", "ADDR", "PHOTO",
 				"REMARK", "POINT", "CREATOR" });
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("ACCOUNT", member.getAccount());

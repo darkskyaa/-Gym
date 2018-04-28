@@ -1,10 +1,8 @@
 package member.controller;
 
-import static util.Constant.STANDARD_DATE_FORMAT;
+import static util.Constant.BIRTH_DATE_FORMAT;
 
 import java.util.Date;
-
-import javax.servlet.http.HttpSession;
 
 import member.pojo.MemberBean;
 import member.service.MemberService;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,18 +36,20 @@ public class MemberController {
 	}
 
 	@PostMapping("register")
-	public String register(MemberBean member) {
+	public String register(@RequestBody MemberBean member) {
+		member.setBirthday(member.getBirthday().substring(0, 10));
+		member.setPoint(0);
 		return memberService.register(member);
 	}
 	
 	@PostMapping("login")
-	public MemberBean login(HttpSession session, String account, String password) {
-		return memberService.login(account, password);
+	public MemberBean login(@RequestBody MemberBean member) {
+		return memberService.login(member.getAccount(), member.getPassword());
 	}
 
 	@InitBinder
 	void dataBinderInit(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(STANDARD_DATE_FORMAT, true));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(BIRTH_DATE_FORMAT, true));
 	}
 }
