@@ -47,7 +47,9 @@ public class MemberService {
 
 	public MemberBean login(String account, String password) {
 		password = toMD5(password);
-		return memberDao.selectByAccountAndPassword(account, password);
+		MemberBean member = memberDao.selectByAccountAndPassword(account, password);
+		if (member != null) member.setPassword(null);
+		return member;
 	}
 	
 	public MemberBean selectById(Integer id) {

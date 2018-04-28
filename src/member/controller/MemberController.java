@@ -42,26 +42,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("login")
-	public String login(HttpSession session, String account, String password) {
-		MemberBean member = memberService.login(account, password); 
-		if (member != null) {
-			session.setAttribute("member", member);
-			return "success";
-		} else {
-			return "failure";
-		}
+	public MemberBean login(HttpSession session, String account, String password) {
+		return memberService.login(account, password);
 	}
 
-	@GetMapping("t1")
-	public String t1() {
-		logger.info("member/t1");
-		System.out.println("id\tname");
-		for (MemberBean member : memberService.getAll()) {
-			System.out.println(member.getId() + "\t" + member.getName());
-		}
-		return "result";
-	}
-	
 	@InitBinder
 	void dataBinderInit(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
