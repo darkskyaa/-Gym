@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Gym</title>
-    <link rel="stylesheet" href="asset/lib/jquery/css/jquery-ui-1.10.4.custom.css">
     <link rel="stylesheet" href="asset/main.css">
     
     <style>
@@ -20,21 +19,14 @@
 </head>
 <body ng-controller="initController" ng-cloak>
     
-    
-    
-    <div class="container">
+    <div class="container" ng-include="'asset/txn/register/register.html'">
 <!--         <button class="btn btn--green btn--animated" ng-click="test()">test</button> -->
-		<div ng-include="'asset/txn/register/register.html'"></div>
     </div>
     
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Jquery -->
-    
     <script src="asset/lib/jquery/jquery.min.js"></script>
-    <script src="asset/lib/jquery/jquery-ui-1.10.4.custom.js"></script>
-    <script src="asset/lib/jquery/jquery-ui-timepicker-addon.js"></script>
-    <script src="asset/lib/jquery/jquery.ui.datepicker-zh-TW.js"></script>
     <!-- angularJs -->
     <script src="asset/lib/angularJs/angular.min.js"></script>
     <script src="asset/lib/angularJs/angular-animate.min.js"></script>
@@ -44,5 +36,6 @@
     <script src="asset/js/filters/number.js"></script>
     <script src="asset/js/controllers/baseController.js"></script>
     <script src="asset/js/controllers/initController.js"></script>
+    <script src="asset/txn/register/register.js"></script>
 </body>
 </html>
