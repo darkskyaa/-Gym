@@ -3,9 +3,8 @@ package member.controller;
 import static util.Constant.BIRTH_DATE_FORMAT;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
+import member.enums.MemberStatus;
 import member.pojo.MemberBean;
 import member.service.MemberService;
 
@@ -13,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -38,11 +38,13 @@ public class MemberController {
 	}
 
 	@PostMapping("register")
-	public Map<String, String> register(@RequestBody MemberBean member) {
+	public ModelMap register(@RequestBody MemberBean member) {
 		member.setBirthday(member.getBirthday().substring(0, 10));
 		member.setPoint(0);
-		Map<String, String> resultMap = new HashMap<>();
-		resultMap.put("msg", memberService.register(member));
+		MemberStatus status = memberService.register(member);
+		ModelMap resultMap = new ModelMap();
+		resultMap.put("code", status.getCode());
+		resultMap.put("msg", status);
 		return resultMap;
 	}
 	
@@ -50,7 +52,7 @@ public class MemberController {
 	public MemberBean login(@RequestBody MemberBean member) {
 		return memberService.login(member.getAccount(), member.getPassword());
 	}
-
+	
 	@InitBinder
 	void dataBinderInit(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));

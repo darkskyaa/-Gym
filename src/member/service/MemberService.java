@@ -1,12 +1,14 @@
 package member.service;
 
-import static util.CommonUtil.checkMember;
 import static util.Crypto.*;
+import static member.enums.MemberStatus.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import member.dao.MemberDao;
+import member.enums.MemberStatus;
 import member.pojo.MemberBean;
 
 import org.apache.log4j.Logger;
@@ -22,27 +24,23 @@ public class MemberService {
 	private MemberDao memberDao;
 	
 	@Transactional
-	public String register(MemberBean member) {
-		StringBuilder resultMessage = checkMember(member, false);
+	public MemberStatus register(MemberBean member) {
 		try {
-			if (resultMessage.toString().equals("")) {
-				if (memberDao.selectByAccount(member.getAccount()) == null) {
-					member.setPassword(toMD5(member.getPassword()));
-					Integer id = memberDao.insert(member);
-					if (id != null && id > 0) {
-						resultMessage.append("register success");
-					} else {
-						resultMessage.append("register failure");
-					}
+			if (memberDao.selectByAccount(member.getAccount()) == null) {
+				member.setPassword(toMD5(member.getPassword()));
+				Integer id = memberDao.insert(member);
+				if (id != null && id > 0) {
+					return SUCCESS;
 				} else {
-					resultMessage.append("account was existed");
+					return FAILURE;
 				}
+			} else {
+				return FAILURE_ACCOUNT_DUPLICATE;
 			}
 		} catch (ParseException e) {
-			resultMessage.append("register failure");
 			logger.error(e.getMessage());
+			return FAILURE;
 		}
-		return resultMessage.toString(); 
 	}
 
 	public MemberBean login(String account, String password) {
