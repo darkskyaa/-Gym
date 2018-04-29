@@ -18,11 +18,11 @@ import org.springframework.stereotype.Repository;
 public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	@Autowired
 	private SimpleJdbcInsert simpleJdbcInsert;
 	
 	@Override
 	public Integer insert(MemberBean member) throws ParseException {
+		simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
 		simpleJdbcInsert.withTableName("MEMBER");
 		simpleJdbcInsert.usingGeneratedKeyColumns("ID");
 		simpleJdbcInsert.usingColumns(new String[] { "ACCOUNT", "PASSWORD",
