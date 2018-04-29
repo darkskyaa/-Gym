@@ -1,6 +1,6 @@
 package member.pojo;
 
-import java.sql.Timestamp;
+import inbody.pojo.InbodyBean;
 
 import core.pojo.CoreBean;
 
@@ -18,7 +18,7 @@ public class MemberBean extends CoreBean {
 	private Integer point;
 	
 	private InbodyBean inbody;
-
+	
 	public Integer getId() {
 		return id;
 	}

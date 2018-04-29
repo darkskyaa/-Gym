@@ -1,6 +1,6 @@
 package member.service;
 
-import static util.MemberUtil.checkMember;
+import static util.CommonUtil.checkMember;
 import static util.Crypto.*;
 
 import java.text.ParseException;

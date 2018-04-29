@@ -1,4 +1,4 @@
-package member.pojo;
+package inbody.pojo;
 
 import core.pojo.CoreBean;
 
