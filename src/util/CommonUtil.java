@@ -1,5 +1,8 @@
 package util;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 import inbody.pojo.InbodyBean;
 import member.pojo.MemberBean;
 
@@ -64,5 +67,10 @@ public class CommonUtil {
 			result.append("field 'BMR' must be filled\n");
 		}
 		return result;
+	}
+	
+	public static String timestamp2String(Timestamp timestamp, SimpleDateFormat sdf) {
+		if (timestamp == null) return null;
+		return sdf.format(timestamp);
 	}
 }

@@ -1,5 +1,6 @@
 package inbody.mapper;
 
+import static util.CommonUtil.timestamp2String;
 import static util.Constant.STANDARD_DATE_FORMAT;
 import inbody.pojo.InbodyBean;
 
@@ -23,10 +24,10 @@ public class InbodyMapper implements RowMapper<InbodyBean> {
 		inbody.setPbf(rs.getDouble(8));
 		inbody.setVfl(rs.getDouble(9));
 		inbody.setBmr(rs.getDouble(10));
-		inbody.setCreator(rs.getString(12));
-		inbody.setCreatedDatetime(STANDARD_DATE_FORMAT.format(rs.getTimestamp(13)));
-		inbody.setModifier(rs.getString(14));
-		inbody.setModifiedDatetime(STANDARD_DATE_FORMAT.format(rs.getTimestamp(15)));
+		inbody.setCreator(rs.getString(11));
+		inbody.setCreatedDatetime(timestamp2String(rs.getTimestamp(12), STANDARD_DATE_FORMAT));
+		inbody.setModifier(rs.getString(13));
+		inbody.setModifiedDatetime(timestamp2String(rs.getTimestamp(14), STANDARD_DATE_FORMAT));
 		return inbody;
 	}
 }
