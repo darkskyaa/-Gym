@@ -3,6 +3,8 @@ package member.controller;
 import static util.Constant.BIRTH_DATE_FORMAT;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import member.pojo.MemberBean;
 import member.service.MemberService;
@@ -36,10 +38,12 @@ public class MemberController {
 	}
 
 	@PostMapping("register")
-	public String register(@RequestBody MemberBean member) {
+	public Map<String, String> register(@RequestBody MemberBean member) {
 		member.setBirthday(member.getBirthday().substring(0, 10));
 		member.setPoint(0);
-		return memberService.register(member);
+		Map<String, String> resultMap = new HashMap<>();
+		resultMap.put("msg", memberService.register(member));
+		return resultMap;
 	}
 	
 	@PostMapping("login")
