@@ -15,14 +15,12 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     		url: 'member/register',
     		data: $scope.registerForm
     	}).then(function successCallback(response) {
-            debugger
     		table(response.data);
     		angular.forEach(response.data, function(obj,index) {
     			alert(obj.id + ' : ' + obj.name);
     		})
-    		
     	}, function errorCallback(response) {
-    		debugger
+            debugger
     	});
     };
     
