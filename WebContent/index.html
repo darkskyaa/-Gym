@@ -14,6 +14,16 @@
         .x-ng-cloak {
             display: none !important;
         }
+        
+        /* modal fade */
+		.eapp-cover {
+			-webkit-filter: blur(5px);
+			-moz-filter: blur(5px);
+			-o-filter: blur(5px);
+			-ms-filter: blur(5px);
+			filter: blur(5px);
+		}
+        
     </style>
     
 </head>
@@ -23,19 +33,33 @@
 <!--         <button class="btn btn--green btn--animated" ng-click="test()">test</button> -->
     </div>
     
-    
+    <!-- 3. 彈跳訊息區 -->   
+    <div id="footer-msgbar" ng-class="{'eapp-cover': system.platform.info[system.platform.type.indexOf('logout')].classic}">
+    	<div style="margin:6px 0 0 0;"><msg-bar></msg-bar></div>
+    </div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Jquery -->
     <script src="asset/lib/jquery/jquery.min.js"></script>
     <!-- angularJs -->
     <script src="asset/lib/angularJs/angular.min.js"></script>
     <script src="asset/lib/angularJs/angular-animate.min.js"></script>
-    <!-- mine -->
+    <!-- angularJs Model -->
     <script src="asset/js/modules/app.js"></script>
+    <!-- angularJs Services -->
     <script src="asset/js/services/sysInfoService.js"></script>
+    <!-- angularJs Filters -->
     <script src="asset/js/filters/number.js"></script>
+    <script src="asset/js/filters/mapping.js"></script>
+    <script src="asset/js/filters/padLeft.js"></script>
+    <script src="asset/js/filters/padRight.js"></script>
+    <script src="asset/js/filters/parseDate.js"></script>
+    <!-- angularJs Controllers -->
     <script src="asset/js/controllers/baseController.js"></script>
     <script src="asset/js/controllers/initController.js"></script>
     <script src="asset/txn/register/register.js"></script>
+    <!-- angularJs Directives -->
+    <script src="asset/js/directives/msgBar.js"></script>
+    <script src="asset/js/directives/targetBlank.js"></script>
+    <script src="asset/js/directives/whenReady.js"></script>
 </body>
 </html>
