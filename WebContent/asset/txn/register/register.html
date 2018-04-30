@@ -7,10 +7,10 @@
         bottom: 0;
         background: #76b852;
         /* fallback for old browsers */
-        background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-        background: -moz-linear-gradient(right, #76b852, #8DC26F);
-        background: -o-linear-gradient(right, #76b852, #8DC26F);
-        background: linear-gradient(to left, #76b852, #8DC26F);
+        background: -webkit-linear-gradient(right, #76b852, #8DC26F); 
+        background: -moz-linear-gradient(right, #76b852, #8DC26F); 
+        background: -o-linear-gradient(right, #76b852, #8DC26F); 
+        background: linear-gradient(to left, #76b852, #8DC26F); 
         font-family: "Roboto", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -97,7 +97,7 @@
             </p>
         </form>
         <form class="login-form" name='login-form' ng-submit="login()">
-            <input type="text" ng-required='true' ng-model='loginForm.account' placeholder="username" /> 
+            <input type="text" ng-required='true' ng-model='loginForm.account' placeholder="email" /> 
             <input type="password" ng-required='true' ng-model='loginForm.password' placeholder="password" />
             <button type="submit">login</button>
             <p class="message">

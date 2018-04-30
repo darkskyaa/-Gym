@@ -9,16 +9,26 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     var table = console.table;
     
     $scope.register = function() {
-        debugger
+    	debugger
     	$http({
     		method: 'POST',
     		url: 'member/register',
     		data: $scope.registerForm
     	}).then(function successCallback(response) {
+    		debugger
     		table(response.data);
-    		angular.forEach(response.data, function(obj,index) {
-    			alert(obj.id + ' : ' + obj.name);
-    		})
+    		switch(response.data.code) {
+    			case -1:
+    				alert('帳號重複! 請重新註冊。');
+    				break;
+    			case 0:
+    				alert('註冊失敗! 請聯絡管理者。');
+    				break;
+    			case 1:
+    				// yes
+    				break;
+    		}
+    		
     	}, function errorCallback(response) {
             debugger
     	});
@@ -32,11 +42,8 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     		data: $scope.loginForm
     	}).then(function successCallback(response) {
             debugger
-    		table(response.data);
-    		angular.forEach(response.data, function(obj,index) {
-    			alert(obj.id + ' : ' + obj.name);
-    		})
-    		
+            sysInfoService.setUser(response.data);
+            $scope.container = '';
     	}, function errorCallback(response) {
     		debugger
     	});
