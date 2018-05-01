@@ -24,7 +24,6 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
      */    
     $scope.args = $rootScope.args;
     
-    
     /**========================================================================
 	Platform Communication function and server
 	平台程式即時通訊資料傳遞函式與擬伺服器

@@ -15,8 +15,6 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     		url: 'member/register',
     		data: $scope.registerForm
     	}).then(function successCallback(response) {
-    		debugger
-    		table(response.data);
     		switch(response.data.code) {
     			case -1:
     				$scope.showErrorMsg('帳號重複! 請重新註冊。');
@@ -30,23 +28,20 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     		}
     		
     	}, function errorCallback(response) {
-    		debugger
-    		$scope.showErrorMsg(response.data);
+    		$scope.showErrorMsg('註冊失敗! 請聯絡管理者。');
     	});
     };
     
     $scope.login = function() {
-        debugger
     	$http({
     		method: 'POST',
     		url: 'member/login',
     		data: $scope.loginForm
     	}).then(function successCallback(response) {
-            debugger
             sysInfoService.setUser(response.data);
-            $scope.container = '';
+            $scope.connector('set','container','');
     	}, function errorCallback(response) {
-    		debugger
+    		
     	});
     };
     

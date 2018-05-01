@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 0 - 600px:      Phone
 600 - 900px:    Tablet portrait
@@ -81,7 +82,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 html {
   /* 16 * 62.5 = 10 */
   /* so 1rem = 10px if user doesn't change font-size */
-  font-size: 62.5%; }
+  font-size: 62.5% !important; }
 
 body {
   box-sizing: border-box; }
@@ -92,8 +93,8 @@ body {
   /*    font-size: 16px;*/
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
-  min-height: 100vh;
+  padding: 0 !important;
+  /* bootstrap在鬧 */
   background: #76b852;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
@@ -101,9 +102,10 @@ body {
   background: -o-linear-gradient(right, #76b852, #8DC26F);
   background: linear-gradient(to left, #76b852, #8DC26F); }
 
-.container {
-  width: 100%;
-  height: 100%; }
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 5rem; }
 
 /* custom */
 .glyphicon-chevron-left:before {
@@ -151,6 +153,30 @@ body {
     animation-name: moveInRight;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+
+.center-text {
+  text-align: center !important; }
+
+.margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
+
+.margin-bottom-big {
+  margin-bottom: 8rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .margin-bottom-big {
+      margin-bottom: 5rem !important; } }
+
+.margin-top-big {
+  margin-top: 8rem !important; }
+
+.margin-top-huge {
+  margin-top: 10rem !important; }
 
 .row {
   max-width: 114rem;

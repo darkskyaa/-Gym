@@ -1,5 +1,5 @@
-eApp.controller('initController', function ($scope, $http, $controller, sysInfoService, $q, $http) {
-    
+eApp.controller('initController', function ($scope, $http, $controller, sysInfoService, $q) {
+
     $controller('baseController', {
         $scope: $scope
     });
@@ -8,8 +8,15 @@ eApp.controller('initController', function ($scope, $http, $controller, sysInfoS
     var log = console.log;
     var table = console.table;
     
+    $scope.$watch(function () {
+        return $scope.connector('get','container');
+    }, function () {
+        $scope.container = $scope.connector('get','container');
+    }, true);
+    
+    
     $scope.init = function () {
-    	$scope.container = 'assets/txn/register/register.html';
+        $scope.connector('set','container', 'assets/txn/register/register.html');
     }
     $scope.init();
 });
