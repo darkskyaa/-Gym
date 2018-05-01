@@ -39,7 +39,6 @@ public class MemberController {
 
 	@PostMapping("register")
 	public ModelMap register(@RequestBody MemberBean member) {
-		member.setBirthday(member.getBirthday().substring(0, 10));
 		member.setPoint(0);
 		MemberStatus status = memberService.register(member);
 		ModelMap resultMap = new ModelMap();

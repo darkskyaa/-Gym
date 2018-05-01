@@ -1,7 +1,8 @@
 package member.pojo;
 
-import inbody.pojo.InbodyBean;
+import java.sql.Timestamp;
 
+import inbody.pojo.InbodyBean;
 import core.pojo.CoreBean;
 
 public class MemberBean extends CoreBean {
@@ -10,7 +11,7 @@ public class MemberBean extends CoreBean {
 	private String password;
 	private String name;
 	private Integer sex;
-	private String birthday;
+	private Timestamp birthday;
 	private String phone;
 	private String addr;
 	private String photo;
@@ -59,11 +60,11 @@ public class MemberBean extends CoreBean {
 		this.sex = sex;
 	}
 
-	public String getBirthday() {
+	public Timestamp getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Timestamp birthday) {
 		this.birthday = birthday;
 	}
 

@@ -2,12 +2,13 @@ package core.pojo;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.sql.Timestamp;
 
 public class CoreBean implements Serializable {
 	private String creator;
-	private String createdDatetime;
+	private Timestamp createdDatetime;
 	private String modifier;
-	private String modifiedDatetime;
+	private Timestamp modifiedDatetime;
 
 	public String getCreator() {
 		return creator;
@@ -17,11 +18,11 @@ public class CoreBean implements Serializable {
 		this.creator = creator;
 	}
 
-	public String getCreatedDatetime() {
+	public Timestamp getCreatedDatetime() {
 		return createdDatetime;
 	}
 
-	public void setCreatedDatetime(String createdDatetime) {
+	public void setCreatedDatetime(Timestamp createdDatetime) {
 		this.createdDatetime = createdDatetime;
 	}
 
@@ -33,11 +34,11 @@ public class CoreBean implements Serializable {
 		this.modifier = modifier;
 	}
 
-	public String getModifiedDatetime() {
+	public Timestamp getModifiedDatetime() {
 		return modifiedDatetime;
 	}
 
-	public void setModifiedDatetime(String modifiedDatetime) {
+	public void setModifiedDatetime(Timestamp modifiedDatetime) {
 		this.modifiedDatetime = modifiedDatetime;
 	}
 	
