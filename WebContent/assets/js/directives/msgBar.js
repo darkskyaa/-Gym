@@ -19,7 +19,7 @@ eApp.directive('msgBar', function() {
 					            			'<div class="row">'+
 					            				'<div class="col-lg-1 col-md-1 col-sm-1"></div>'+
 					            				'<div id="mwt_msg_panl" class="col-lg-11 col-md-11 col-sm-11">'+
-					            					'<div ng-init="insert(row)" id="mwt_msg_box" style="border-radius:5px!important;line-height:25px;text-align:left;animation: ngdialog-fadein 0.5s;" ng-repeat="row in msglist" ng-class="{\'alert alert-success\': row.type == \'S\',\'alert alert-info\': row.type == \'N\', \'alert alert-warning\': row.type==\'W\', \'alert alert-danger\': row.type==\'E\'}"><a class="close" style="color:#000;" ng-click="remove(row)">&times;</a><span ng-class="{\'label label-info\': row.type == \'N\', \'label label-success\': row.type == \'S\', \'label label-warning\': row.type == \'W\', \'label label-danger\': row.type == \'E\'}">{{row.label}}</span>&nbsp;{{row.message}}</div>'+
+					            					'<div ng-init="insert(row)" id="mwt_msg_box" style="border-radius:5px!important;line-height:25px;text-align:left;animation: fadeIn .5s;" ng-repeat="row in msglist" ng-class="{\'alert alert-success\': row.type == \'S\',\'alert alert-info\': row.type == \'N\', \'alert alert-warning\': row.type==\'W\', \'alert alert-danger\': row.type==\'E\'}"><a class="close" style="color:#000;" ng-click="remove(row)">&times;</a><span ng-class="{\'label label-info\': row.type == \'N\', \'label label-success\': row.type == \'S\', \'label label-warning\': row.type == \'W\', \'label label-danger\': row.type == \'E\'}">{{row.label}}</span>&nbsp;{{row.message}}</div>'+
 					            				'</div>'+
 				            				'</div>'+
 					            		'</div>'+
