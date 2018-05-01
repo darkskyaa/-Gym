@@ -1,0 +1,58 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /*    font-size: 16px;*/
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding: 3rem;
+    min-height: 100vh;
+
+    background: #76b852;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+    background: -moz-linear-gradient(right, #76b852, #8DC26F);
+    background: -o-linear-gradient(right, #76b852, #8DC26F);
+    background: linear-gradient(to left, #76b852, #8DC26F);
+
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+/* modal fade */
+.eapp-cover {
+    @include filter(blur, 5px);
+}
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    text-align: center;
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 700;
+        letter-spacing: 3.5rem;
+
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+
+    &--sub {
+        display: block;
+        font-style: 2rem;
+        font-weight: 400;
+        letter-spacing: 1.75rem;
+
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+
+}
