@@ -21,6 +21,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The controller of Member subsystem
+ * @date 2018-04-14
+ * @category Member
+ * @author William
+ */
 @RestController
 @RequestMapping("member")
 public class MemberController {
@@ -29,6 +35,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	/**
+	 * The web api for getting a member information
+	 * @param id : member id
+	 * @return pojo object of member
+	 */
 	@GetMapping("findMemberById")
 	public MemberBean findMemberById(Integer id) {
 		if (id == null) {
@@ -37,6 +48,11 @@ public class MemberController {
 		return memberService.selectById(id);
 	}
 
+	/**
+	 * The we api for register a member
+	 * @param member : new member information
+	 * @return result map for register
+	 */
 	@PostMapping("register")
 	public ModelMap register(@RequestBody MemberBean member) {
 		member.setPoint(0);
@@ -47,11 +63,20 @@ public class MemberController {
 		return resultMap;
 	}
 	
+	/**
+	 * The web api for member login
+	 * @param member : login member information
+	 * @return information without password for logged in member 
+	 */
 	@PostMapping("login")
 	public MemberBean login(@RequestBody MemberBean member) {
 		return memberService.login(member.getAccount(), member.getPassword());
 	}
 	
+	/**
+	 * The bind method for type "String" and "Date"
+	 * @param binder
+	 */
 	@InitBinder
 	void dataBinderInit(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));

@@ -7,6 +7,12 @@ import member.pojo.MemberBean;
 
 import org.springframework.jdbc.core.RowMapper;
 
+/**
+ * The mapper of Member subsystem
+ * @date 2018-04-23
+ * @category Member
+ * @author William
+ */
 public class MemberMapper implements RowMapper<MemberBean> {
 
 	@Override

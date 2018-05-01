@@ -14,6 +14,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+/**
+ * The dao implementation of Member subsystem
+ * @date 2018-04-23
+ * @category Member
+ * @author William
+ */
 @Repository
 public class MemberDaoImpl implements MemberDao {
 	@Autowired
