@@ -139,6 +139,33 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
 		// }
 	};
 	
+	function sMsgHandler(sMsg, params) {
+		var txtMsg = sMsg;
+		
+//		if(typeof params !== "undefined"){
+		try{
+			var i = 0;
+			if(txtMsg.match('field')){
+				angular.forEach(params, function (){
+					txtMsg = txtMsg.replace('#{field'+ (i+1) +'}#', params[i]);
+					i++;
+				});
+			}
+			else{
+				angular.forEach(params, function (){
+					txtMsg = txtMsg.replace('{'+ i +'}', params[i]);
+					i++;
+				});
+			}
+		}
+		catch(e){
+			//
+		}
+		return txtMsg;
+	}
+	
+	$scope.today = getToday();
+	
     ///======================
 	/// DATEPICKER
 	///======================

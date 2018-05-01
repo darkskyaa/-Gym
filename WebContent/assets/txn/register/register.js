@@ -25,12 +25,13 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     				$scope.showErrorMsg('註冊失敗! 請聯絡管理者。');
     				break;
     			case 1:
-    				$scope.showSuccessMsg('註冊失敗! 請聯絡管理者。');
+    				$scope.showSuccessMsg('註冊成功!');
     				break;
     		}
     		
     	}, function errorCallback(response) {
-            debugger
+    		debugger
+    		$scope.showErrorMsg(response.data);
     	});
     };
     
