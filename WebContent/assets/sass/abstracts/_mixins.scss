@@ -1,24 +1,9 @@
 @mixin clearfix {
     &::after {
-        content: "";
+        content: '';
         display: table;
         clear: both;
     }
-}
-
-@mixin absCenter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@mixin filter($filter-type, $filter-amount) {
-    -webkit-filter: $filter-type + unquote('(#{$filter-amount})');
-    -moz-filter: $filter-type + unquote('(#{$filter-amount})');
-    -ms-filter: $filter-type + unquote('(#{$filter-amount})');
-    -o-filter: $filter-type + unquote('(#{$filter-amount})');
-    filter: $filter-type + unquote('(#{$filter-amount})');
 }
 
 @mixin border-radius($radius) {
@@ -28,9 +13,96 @@
     border-radius: $radius;
 }
 
+@mixin transition($sec, $type) {
+    -webkit-transition: all $type $sec;
+    -moz-transition: all $type $sec;
+    -o-transition: all $type $sec;
+    transition: all $type $sec;
+}
+
+@mixin transition-timing($type) {
+    -webkit-transition-timing-function: $type;
+    -moz-transition-timing-function: $type;
+    -ms-transition-timing-function: $type;
+    -o-transition-timing-function: $type;
+    transition-timing-function: $type;
+}
+
+@mixin animate($name, $sec) {
+    -webkit-animation: $sec $name;
+    -moz-animation: $sec $name;
+    -o-animation: $sec $name;
+    animation: $sec $name;
+}
+
+@mixin transform ($value) {
+    transform: $value;
+    -ms-transform: $value;
+    -webkit-transform: $value;
+}
+
+@mixin transitionDuration ($duration) {
+    transition-duration: $duration;
+    -webkit-transition-duration: $duration;
+}
+
+@mixin linear-gradient-b($args...) {
+    background-image: -o-linear-gradient($args);
+    background-image: -moz-linear-gradient($args);
+    background-image: -webkit-linear-gradient($args);
+    background-image: linear-gradient($args);
+}
+
+/* ------------------------------------------- */
+/* Angular Mixins
+/* ------------------------------------------- */
+
+@mixin easingTimingFunction () {
+    @include transition(0, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+    /* easeOutQuad */
+    @include transition-timing(cubic-bezier(0.250, 0.460, 0.450, 0.940));
+    /* easeOutQuad */
+}
+
+@mixin bouncyTimingFunction () {
+    @include transition(0, cubic-bezier(0.175, 0.885, 0.320, 1.275));
+
+    @include transition-timing(cubic-bezier(0.175, 0.885, 0.450, 1.595));
+    /* custom */
+}
+
+@mixin easingOutQuadTimingFunction () {
+    @include transition(0, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+    /* easeOutQuad */
+    @include transition-timing(cubic-bezier(0.250, 0.460, 0.450, 0.940));
+    /* easeOutQuad */
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absRight {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-100%, 0);
+}
+
 @mixin font-size($size) {
     font-size: $size;
     font-size: calculateRem($size);
+}
+
+@mixin filter($filter-type, $filter-amount) {
+    -webkit-filter: $filter-type + unquote('(#{$filter-amount})');
+    -moz-filter: $filter-type + unquote('(#{$filter-amount})');
+    -ms-filter: $filter-type + unquote('(#{$filter-amount})');
+    -o-filter: $filter-type + unquote('(#{$filter-amount})');
+    filter: $filter-type + unquote('(#{$filter-amount})');
 }
 
 @mixin when-inside($context) {
