@@ -1012,28 +1012,28 @@ body {
 .margin-top-huge {
   margin-top: 10rem !important; }
 
-.row {
+.my-row {
   max-width: 114rem;
   margin: 0 auto; }
-  .row:not(:last-child) {
+  .my-row:not(:last-child) {
     margin-bottom: 8rem; }
-  .row [class^='col-'] {
+  .my-row [class^='my-col-'] {
     float: left; }
-    .row [class^='col-']:not(:last-child) {
+    .my-row [class^='my-col-']:not(:last-child) {
       margin-right: 6rem; }
-  .row .col-1-of-2 {
+  .my-row .my-col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
-  .row .col-1-of-3 {
+  .my-row .my-col-1-of-3 {
     width: calc((100% - 2 * 6rem) / 3); }
-  .row .col-2-of-3 {
+  .my-row .my-col-2-of-3 {
     width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
-  .row .col-1-of-4 {
+  .my-row .my-col-1-of-4 {
     width: calc((100% - 3 * 6rem) / 4); }
-  .row .col-2-of-4 {
+  .my-row .my-col-2-of-4 {
     width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
-  .row .col-3-of-4 {
+  .my-row .my-col-3-of-4 {
     width: calc(3 * ((100% - 3 * 6rem) / 4) + 2*6rem); }
-  .row::after {
+  .my-row::after {
     content: '';
     display: table;
     clear: both; }

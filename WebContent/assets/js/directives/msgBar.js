@@ -20,7 +20,7 @@ eApp.directive('msgBar', function() {
 					            				'<div class="col-lg-1 col-md-1 col-sm-1"></div>'+
 					            				'<div id="mwt_msg_panl" class="col-lg-11 col-md-11 col-sm-11">'+
 					            					'<div id="e-msgbar-clear" class="text-right" ng-if="msglist.length>0"><span ng-click="remove(null,true)"><i class="glyphicon glyphicon-trash"></i> 全部清除</span></div>'+
-					            					'<div ng-init="insert(row)" id="mwt_msg_box" style="border-radius:5px!important;line-height:25px;text-align:left;animation: fadeIn .5s;" ng-repeat="row in msglist" ng-class="{\'alert alert-success\': row.type == \'S\',\'alert alert-info\': row.type == \'N\', \'alert alert-warning\': row.type==\'W\', \'alert alert-danger\': row.type==\'E\'}"><a class="close" style="color:#000;" ng-click="remove(row)">&times;</a><span ng-class="{\'label label-info\': row.type == \'N\', \'label label-success\': row.type == \'S\', \'label label-warning\': row.type == \'W\', \'label label-danger\': row.type == \'E\'}">{{row.label}}</span>&nbsp;{{row.message}}</div>'+
+					            					'<div ng-init="insert(row)" id="mwt_msg_box" style="border-radius:5px!important;line-height:25px;text-align:left;animation: fadein .5s;" ng-repeat="row in msglist" ng-class="{\'alert alert-success\': row.type == \'S\',\'alert alert-info\': row.type == \'N\', \'alert alert-warning\': row.type==\'W\', \'alert alert-danger\': row.type==\'E\'}"><a class="close" style="color:#000;" ng-click="remove(row)">&times;</a><span ng-class="{\'label label-info\': row.type == \'N\', \'label label-success\': row.type == \'S\', \'label label-warning\': row.type == \'W\', \'label label-danger\': row.type == \'E\'}">{{row.label}}</span>&nbsp;{{row.message}}</div>'+
 					            				'</div>'+
 				            				'</div>'+
 					            		'</div>'+
@@ -39,7 +39,7 @@ eApp.directive('msgBar', function() {
         		if(removeAll) {
         			$scope.msglist = [];
         		}else {
-        			for(var i=0; i<$scope.msglist.length; i+=1){
+        			for(var i=0; i<$scope.msglist.length; i++){
         				if($scope.msglist[i] == row)$scope.msglist.splice(i, 1);
         			}
         		}
@@ -65,23 +65,23 @@ eApp.directive('msgBar', function() {
     	    		switch(msgType){
     		    		case 'SUCCESS':
     		    			tmpTP = 'S';
-    	    				tmpTXT = '成功訊息';
+    	    				tmpTXT = '成功';
     	    				break;
     		    		case 'NORMAL':
     		    			tmpTP = 'N';
-    	    				tmpTXT = '一般訊息';
+    	    				tmpTXT = '一般';
     	    				break;
     		    		case 'WARNING':
     		    			tmpTP = 'W';
-    	    				tmpTXT = '警告訊息';
+    	    				tmpTXT = '警告';
     	    				break;
     		    		case 'DANGER':
     	    				tmpTP = 'E';
-    		    			tmpTXT = '錯誤訊息';
+    		    			tmpTXT = '錯誤';
     		    			break;
     	    			default:
     	    				tmpTP = 'N';
-	    					tmpTXT = '一般訊息';
+	    					tmpTXT = '一般';
 	    					break;
     	    		};
 //    	    		alert(' tmpTP: '+tmpTP+' tmpTXT: '+tmpTXT);
@@ -260,27 +260,50 @@ eApp.directive('msgBar', function() {
 //        	});	
         	
         	/** CSS/CLASS **/
-        	/* Version: 2016/02/21 */
-        	/* msg button */
+        	/********************VIC 訊息 ********************/
+
         	$("#mwt_fb_tab").css("z-index","103") //51->102
         					.css("position","absolute")
         					.css("left","0")
+        					.css("width","50px")
+        					.css("padding","9px 0 9px 0")
+        					.css("bottom","20px")
+        					.css("cursor","pointer")
         					.css("margin-bottom","25px")
 							.css("background","rgb(0, 51, 153)")
 							.css("background","-moz-linear-gradient(0deg,  rgb(179, 179, 255) 0%, rgb(26, 26, 255) 100%)")
 							.css("background","-webkit-linear-gradient(0deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
 							.css("background","linear-gradient(135deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
 							.css("filter","progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 )")
+							.css("color","#ffffff")
+							.css("text-align","center")
 //        					.css("background","hsla(0, 100%, 50%, 0.5)")
         					.css("border","0px")
 //        					.css("text-shadow","0 0 10px rgba(255,255,255,1)")
 							.css("-webkit-box-shadow","rgb(206,220,231) 0px 2px 6px")
 	   						.css("-moz-box-shadow","rgb(206,220,231) 0px 2px 6px")
-	   						.css("box-shadow","rgb(206,220,231) 0px 2px 6px");
+	   						.css("box-shadow","rgb(206,220,231) 0px 2px 6px")
+	   						.css("-webkit-clip-path","polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)")
+	   						.css("clip-path","polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)");
+        	
+        	$("#mwt_fb_tab span").css("display","block")
+        						 .css("height","20px")
+        						 .css("padding","1px 0")
+        						 .css("text-transform","uppercase")
+        						 .css("font-weight","bold");
+        	
         	/* msg button text */
         	$(".mwt_btn_color").css("color","#FFFFFF");
-        	$("#mwt_mwt_slider_scroll").css("z-index","102") //50-101
+        	
+        	$("#mwt_mwt_slider_scroll").css("position","fixed")
+        							   .css("left","-550px")
+        							   .css("width","550px")
+        							   .css("bottom","100px")
+        							   .css("height","100px")
+        							   .css("z-index","102")
         							   .css("margin-bottom","15px");
+        	
+        	
         	$("#mwt_slider_content").css("overflow-x","hidden")
 			   						.css("overflow-y","auto")
 			   						.css("height","198px")
@@ -294,10 +317,10 @@ eApp.directive('msgBar', function() {
 			   						.css("box-shadow","rgb(102, 153, 255) 0px 2px 6px")
 			   						.css("background","hsla(220, 90%, 40%, 0.1)");
 //        							.css("background","hsla(0,0%,100%,.1)");
-			   					
-
+        	$("#mwt_slider_content p").css("margin","10px");		
         	
-        	
+        	// wait for complete hover css
+        	$("#mwt_fb_tab-hover").css();
         }
     };
     
