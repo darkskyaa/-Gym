@@ -265,14 +265,14 @@ eApp.directive('msgBar', function() {
         	$("#mwt_fb_tab").css("z-index","103") //51->102
         					.css("position","absolute")
         					.css("left","0")
-        					.css("margin-bottom","2.5rem")
-							.css("background","rgb(254,187,187)")
-							.css("background","-moz-linear-gradient(-45deg,  rgba(254,187,187,1) 0%, rgba(255,92,92,1) 100%)")
-							.css("background","-webkit-linear-gradient(-45deg,  rgba(254,187,187,1) 0%,rgba(255,92,92,1) 100%)")
-							.css("background","linear-gradient(135deg,  rgba(254,187,187,1) 0%,rgba(255,92,92,1) 100%)")
+        					.css("margin-bottom","25px")
+							.css("background","rgb(0, 51, 153)")
+							.css("background","-moz-linear-gradient(0deg,  rgb(179, 179, 255) 0%, rgb(26, 26, 255) 100%)")
+							.css("background","-webkit-linear-gradient(0deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
+							.css("background","linear-gradient(135deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
 							.css("filter","progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 )")
 //        					.css("background","hsla(0, 100%, 50%, 0.5)")
-        					.css("border","0")
+        					.css("border","0px")
 //        					.css("text-shadow","0 0 10px rgba(255,255,255,1)")
 							.css("-webkit-box-shadow","rgb(206,220,231) 0px 2px 6px")
 	   						.css("-moz-box-shadow","rgb(206,220,231) 0px 2px 6px")
@@ -289,11 +289,11 @@ eApp.directive('msgBar', function() {
 			   						.css("-webkit-border-radius","0px 15px 15px 0px")
 			   						.css("-moz-border-radius","0px 15px 15px 0px")
 			   						.css("border-radius","0px 15px 15px 0px")			   						
-			   						.css("-webkit-box-shadow","rgb(206,220,231) 0px 2px 6px")
-			   						.css("-moz-box-shadow","rgb(206,220,231) 0px 2px 6px")
-			   						.css("box-shadow","rgb(206,220,231) 0px 2px 6px")
-			   						//.css("background","hsla(0, 90%, 40%, 0.1)");
-        							.css("background","hsla(0,0%,100%,.1)");
+			   						.css("-webkit-box-shadow","rgb(102, 153, 255) 0px 2px 6px")
+			   						.css("-moz-box-shadow","rgb(102, 153, 255) 0px 2px 6px")
+			   						.css("box-shadow","rgb(102, 153, 255) 0px 2px 6px")
+			   						.css("background","hsla(220, 90%, 40%, 0.1)");
+//        							.css("background","hsla(0,0%,100%,.1)");
 			   					
 
         	
