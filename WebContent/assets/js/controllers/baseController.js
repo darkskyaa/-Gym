@@ -10,7 +10,7 @@
  * 	[function] 
  * 
  * -----------------------------------------------------------------------------*/
-eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $window, $timeout) {
+eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $window, $timeout, place) {
     $scope.controllerName = ""; 
     $rootScope.language = $window.navigator.language || $window.navigator.userLanguage;
     /* current controller name */
@@ -43,30 +43,30 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
     	$scope.connector();
     ==========================================================================*/
     $scope.connector = function (type, name, args) {
-    	if(!type && !name && !args){
+    	if(!type && !name && !args) {
     		return;
     	};
     	//check parameter
-    	if(!type || !name){
+    	if(!type || !name) {
     		return;
 		};
 		//set id
-		var id = angular.copy(name.toString().toUpperCase().trim());
+		var id = name.toString().toUpperCase().trim();
 		//select type
-    	switch(type.toString().toUpperCase().trim()){
+    	switch(type.toString().toUpperCase().trim()) {
 	    	case 'SET':
 		    	var data = angular.copy(args);
 		    	if($rootScope.server.id.indexOf(id)===-1){
 		    		$rootScope.server.id.push(id);
 		    		$rootScope.server.data.push(data);
-		    	}else{
+		    	} else {
 		    		$rootScope.server.data[$rootScope.server.id.indexOf(id)] = data;
 		    	}
 	    		break;
 	    	case 'GET':
-	    		if($rootScope.server.id.indexOf(id)===-1){
+	    		if($rootScope.server.id.indexOf(id)===-1) {
 	    			return;
-	    		}else{
+	    		} else {
 	    			return (angular.copy($rootScope.server.data[$rootScope.server.id.indexOf(id)]));
 	    		}
 	    		break;
@@ -79,9 +79,6 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
 	///======================
 	/// 訊息通知
 	///======================
-    //Modify: 2016/03/22 ArthurKO
-    //Modify: 2016/03/31 William: 新增參數，允許訊息帶參數
-    //Success
 	$rootScope.showSuccessMsg = function(sMsg, params) {
 		$rootScope.showMsgProcess(sMsg, 'SUCCESS', params);
 	}
@@ -112,8 +109,6 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
 					padLeft(oDate.getMinutes().toString(), 2) + ":" +
         			padLeft(oDate.getSeconds().toString(), 2) + "-" +
         			sMsgHandler(sMsg, params);
-        			//$filter('i18n')(sMsg).replace('{0}', params);
-        			//$filter('i18n')(sMsg);
 		}
 
 		sMsg = sMsg || $scope.msg;
@@ -149,8 +144,7 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
 					txtMsg = txtMsg.replace('#{field'+ (i+1) +'}#', params[i]);
 					i++;
 				});
-			}
-			else{
+			} else {
 				angular.forEach(params, function (){
 					txtMsg = txtMsg.replace('{'+ i +'}', params[i]);
 					i++;
@@ -163,6 +157,17 @@ eApp.controller('baseController', function($rootScope, $scope, $http, $filter, $
 		return txtMsg;
 	}
 	
+    ///=============================
+    /// test how to change container 
+    ///=============================
+    $rootScope.changeContainer= function(location) {
+        if(!place[location]) {
+            $rootScope.showErrorMsg('no such place: ' + location);
+            return;
+        }
+        $scope.connector('set','container', place[location]);
+    }
+    
 	$scope.today = getToday();
 	
     ///======================

@@ -9,7 +9,6 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     var table = console.table;
     
     $scope.register = function() {
-    	debugger
     	$http({
     		method: 'POST',
     		url: 'member/register',
@@ -38,10 +37,15 @@ eApp.controller('registerController', function ($scope, $http, $controller, sysI
     		url: 'member/login',
     		data: $scope.loginForm
     	}).then(function successCallback(response) {
-            sysInfoService.setUser(response.data);
-            $scope.connector('set','container','');
+    		if(response.data) {
+    			sysInfoService.setUser(response.data);
+                $scope.changeContainer('memberInfo');
+    		} else {
+    			$scope.showErrorMsg('帳號密碼錯誤 ! ');
+    		}
+            
     	}, function errorCallback(response) {
-    		
+    		$scope.showErrorMsg('系統錯誤，請聯絡管理員。');
     	});
     };
     

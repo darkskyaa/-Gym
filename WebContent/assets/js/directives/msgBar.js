@@ -132,6 +132,70 @@ eApp.directive('msgBar', function() {
         }],
         link: function (scope, element, attrs, ctlModel, transclude) {
         	
+        	/** CSS/CLASS **/
+        	/********************VIC 訊息 ********************/
+
+        	$("#mwt_fb_tab").css("z-index","103") //51->102
+        					.css("position","absolute")
+        					.css("left","0")
+        					.css("width","50px")
+        					.css("padding","9px 0 9px 0")
+        					.css("bottom","20px")
+        					.css("cursor","pointer")
+        					.css("margin-bottom","25px")
+							.css("background","rgb(0, 51, 153)")
+							.css("background","-moz-linear-gradient(0deg,  rgb(179, 179, 255) 0%, rgb(26, 26, 255) 100%)")
+							.css("background","-webkit-linear-gradient(0deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
+							.css("background","linear-gradient(135deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
+							.css("filter","progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 )")
+							.css("color","#ffffff")
+							.css("text-align","center")
+//        					.css("background","hsla(0, 100%, 50%, 0.5)")
+        					.css("border","0px")
+//        					.css("text-shadow","0 0 10px rgba(255,255,255,1)")
+							.css("-webkit-box-shadow","rgb(206,220,231) 0px 2px 6px")
+	   						.css("-moz-box-shadow","rgb(206,220,231) 0px 2px 6px")
+	   						.css("box-shadow","rgb(206,220,231) 0px 2px 6px")
+	   						.css("-webkit-clip-path","polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)")
+	   						.css("clip-path","polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)");
+        	
+        	$("#mwt_fb_tab span").css("display","block")
+        						 .css("height","20px")
+        						 .css("padding","1px 0")
+        						 .css("text-transform","uppercase")
+        						 .css("font-weight","bold");
+        	
+        	/* msg button text */
+        	$(".mwt_btn_color").css("color","#FFFFFF");
+        	
+        	$("#mwt_mwt_slider_scroll").css("position","fixed")
+        							   .css("left","-550px")
+        							   .css("width","550px")
+        							   .css("bottom","100px")
+        							   .css("height","100px")
+        							   .css("z-index","102")
+        							   .css("margin-bottom","15px");
+        	
+        	
+        	$("#mwt_slider_content").css("overflow-x","hidden")
+			   						.css("overflow-y","auto")
+			   						.css("height","198px")
+			   						.css("top","20px")
+			   						.css("text-align","center")			   						
+			   						.css("-webkit-border-radius","0px 15px 15px 0px")
+			   						.css("-moz-border-radius","0px 15px 15px 0px")
+			   						.css("border-radius","0px 15px 15px 0px")			   						
+			   						.css("-webkit-box-shadow","rgb(102, 153, 255) 0px 2px 6px")
+			   						.css("-moz-box-shadow","rgb(102, 153, 255) 0px 2px 6px")
+			   						.css("box-shadow","rgb(102, 153, 255) 0px 2px 6px")
+			   						.css("background","hsla(220, 90%, 40%, 0.1)");
+//        							.css("background","hsla(0,0%,100%,.1)");
+        	$("#mwt_slider_content p").css("margin","10px");		
+        	
+        	// wait for complete hover css
+//        	$("#mwt_fb_tab-hover").css();
+        	
+        	
         	var w = $("#mwt_slider_content").width();
         	
         	$("#mwt_fb_tab").attr("title","滑鼠點擊展開或隱藏訊息視窗").on("mouseenter",function(){
@@ -259,68 +323,7 @@ eApp.directive('msgBar', function() {
 //        	    };
 //        	});	
         	
-        	/** CSS/CLASS **/
-        	/********************VIC 訊息 ********************/
-
-        	$("#mwt_fb_tab").css("z-index","103") //51->102
-        					.css("position","absolute")
-        					.css("left","0")
-        					.css("width","50px")
-        					.css("padding","9px 0 9px 0")
-        					.css("bottom","20px")
-        					.css("cursor","pointer")
-        					.css("margin-bottom","25px")
-							.css("background","rgb(0, 51, 153)")
-							.css("background","-moz-linear-gradient(0deg,  rgb(179, 179, 255) 0%, rgb(26, 26, 255) 100%)")
-							.css("background","-webkit-linear-gradient(0deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
-							.css("background","linear-gradient(135deg,  rgb(179, 179, 255) 0%,rgb(26, 26, 255) 100%)")
-							.css("filter","progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 )")
-							.css("color","#ffffff")
-							.css("text-align","center")
-//        					.css("background","hsla(0, 100%, 50%, 0.5)")
-        					.css("border","0px")
-//        					.css("text-shadow","0 0 10px rgba(255,255,255,1)")
-							.css("-webkit-box-shadow","rgb(206,220,231) 0px 2px 6px")
-	   						.css("-moz-box-shadow","rgb(206,220,231) 0px 2px 6px")
-	   						.css("box-shadow","rgb(206,220,231) 0px 2px 6px")
-	   						.css("-webkit-clip-path","polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)")
-	   						.css("clip-path","polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)");
         	
-        	$("#mwt_fb_tab span").css("display","block")
-        						 .css("height","20px")
-        						 .css("padding","1px 0")
-        						 .css("text-transform","uppercase")
-        						 .css("font-weight","bold");
-        	
-        	/* msg button text */
-        	$(".mwt_btn_color").css("color","#FFFFFF");
-        	
-        	$("#mwt_mwt_slider_scroll").css("position","fixed")
-        							   .css("left","-550px")
-        							   .css("width","550px")
-        							   .css("bottom","100px")
-        							   .css("height","100px")
-        							   .css("z-index","102")
-        							   .css("margin-bottom","15px");
-        	
-        	
-        	$("#mwt_slider_content").css("overflow-x","hidden")
-			   						.css("overflow-y","auto")
-			   						.css("height","198px")
-			   						.css("top","20px")
-			   						.css("text-align","center")			   						
-			   						.css("-webkit-border-radius","0px 15px 15px 0px")
-			   						.css("-moz-border-radius","0px 15px 15px 0px")
-			   						.css("border-radius","0px 15px 15px 0px")			   						
-			   						.css("-webkit-box-shadow","rgb(102, 153, 255) 0px 2px 6px")
-			   						.css("-moz-box-shadow","rgb(102, 153, 255) 0px 2px 6px")
-			   						.css("box-shadow","rgb(102, 153, 255) 0px 2px 6px")
-			   						.css("background","hsla(220, 90%, 40%, 0.1)");
-//        							.css("background","hsla(0,0%,100%,.1)");
-        	$("#mwt_slider_content p").css("margin","10px");		
-        	
-        	// wait for complete hover css
-        	$("#mwt_fb_tab-hover").css();
         }
     };
     

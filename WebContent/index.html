@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="assets/lib/Bootstrap-UI-Modules/ui-bootstrap-custom-2.1.3-csp.css" />
     <!-- 日期元件 -->
     <link rel="stylesheet" media="screen" href="assets/lib/Bootstrap-Modules/datepicker.css">
+    <!-- icon -->
+    <link href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
     <!-- mine -->
     <link rel="stylesheet" href="assets/main.css">
     <style>
@@ -39,17 +41,18 @@
 </head>
 
 <body ng-controller="initController" ng-cloak>
-
+    
+    <!-- navigation -->
+    <div ng-include="'assets/txn/navigation/navigation.html'"></div>
+    <!-- main -->
     <div class="main-container">
-        <div ng-include="container" class="slide-down"></div>
+        <div ng-include="connector('get','container')" class="slide-down"></div>
         <!--         <button class="btn btn--green btn--animated" ng-click="test()">test</button> -->
     </div>
 
-    <!-- 3. 彈跳訊息區 -->
+    <!-- 彈跳訊息區 -->
     <div id="footer-msgbar" ng-class="{'eapp-cover': ture}">
-        <div style="margin:6px 0 0 0;">
-            <msg-bar></msg-bar>
-        </div>
+        <msg-bar></msg-bar>
     </div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Jquery -->
@@ -76,6 +79,7 @@
     <script src="assets/js/modules/app.js"></script>
     <!-- angularJs Services -->
     <script src="assets/js/services/sysInfoService.js"></script>
+    <script src="assets/js/services/place.js"></script>
     <!-- angularJs Filters -->
     <script src="assets/js/filters/number.js"></script>
     <script src="assets/js/filters/mapping.js"></script>
@@ -85,7 +89,9 @@
     <!-- angularJs Controllers -->
     <script src="assets/js/controllers/baseController.js"></script>
     <script src="assets/js/controllers/initController.js"></script>
+    <script src="assets/txn/navigation/navigation.js"></script>
     <script src="assets/txn/register/register.js"></script>
+    <script src="assets/txn/memberInfo/memberInfo.js"></script>
     <!-- angularJs Directives -->
     <script src="assets/js/directives/msgBar.js"></script>
     <script src="assets/js/directives/targetBlank.js"></script>
