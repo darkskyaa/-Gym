@@ -2,7 +2,7 @@
     <div class="menu">
         <ul>
             <li ng-click="changeContainer('memberInfo')">會員專區</li>
-            <li ng-click="changeContainer('')" class="active">課程表
+            <li ng-click="changeContainer('')">課程表
 <!--
                 <ul>
                     <li><a href="#">School</a>
@@ -48,6 +48,11 @@
             $(this).children("ul").stop(true, false).fadeToggle(150);
             e.preventDefault();
         }
+    });
+    
+    $('.menu > ul > li').click(function(){
+        $('.menu > ul > li').removeClass("active");
+        $(this).addClass("active");
     });
     //If width is more than 943px dropdowns are displayed on hover
 
