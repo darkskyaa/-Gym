@@ -1,8 +1,9 @@
 /*
-SQLyog Trial v13.0.0 (64 bit)
+SQLyog Community v12.2.4 (64 bit)
 MySQL - 5.7.20 : Database - GYM
 *********************************************************************
 */
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -38,10 +39,15 @@ CREATE TABLE `COURSE` (
 /*Data for the table `COURSE` */
 
 insert  into `COURSE`(`ID`,`TYPE`,`CATEGORY`,`NAME`,`NAME_ENG`,`FEATURE`,`NUM_LIMIT`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
 (1,'g','aaa','拳擊有氧','Boxing','最早是由一名黑人的搏擊世界冠軍創造的，近兩年才在國內發展起來的。其形式是將拳擊、空手道、跆拳道、功夫，甚至一些舞蹈動作混合在一起，在激烈的音樂中，進行一些拳擊和跆拳道的基本拳法和腿法的運動。健身者在出拳、踢腿的過程中，隨著音樂揮動雙拳，動作剛勁有力，讓健身者盡情地發洩，盡情地出汗，並在不知不覺中減掉全身多餘的脂肪。',10,'ADMIN','2018-04-22 01:27:51',NULL,'2018-04-22 16:12:22'),
+
 (2,'g','bbb','拳輪','Krankcycle','全球最新流行上半身運動器材。飛輪創始者Johnny G發明的最新上半身運動器材同時用到手臂、胸部、背部、腰部等多處! 全台首見!目前由World Gym獨家引進!',15,'ADMIN','2018-04-22 01:28:42',NULL,'2018-04-22 16:11:57'),
+
 (3,'g','bbb','多功式訓練系統','Purmotion','全新多功性肌力訓練系統，刮起運動新旋風! 提供了傳統器材如槓鈴以及啞鈴所無法比擬的訓練面向，看似簡單的變換身體動作，其實已經是肌力方面的挑戰。如果你要尋求體能表現的極限，這是一套很棒的訓練系統。不只可增進核心的力量，核心的強化可幫助避免受傷，增進身體姿勢正確，對日常生活功能性表現有很大助益；也可結合負荷重的方式，進行肌力、肌耐力、爆發力、協調性等的訓練；更可模擬多種競技運動姿勢、加強運動表現。',20,'ADMIN','2018-04-22 01:32:03',NULL,'2018-04-22 16:12:00'),
+
 (4,'g','aaa','懸吊訓練系統','TRX','TRX是一種利用你自己本身的體重以及重力，來增強肌力，平衡，協調，柔軟度，核心以及關節穩定度，來達到預防傷害的一種訓練。懸吊訓練課程透過各種運動可以增進核心力量，藉著運動所創造出的不穩定的要素來讓核心自然而然地提供平衡以及協調性。想像一下，增強核心的力量以及穩定度會對你的日常表現以及生活方式有多大的助益!',5,'ADMIN','2018-04-22 01:34:51',NULL,'2018-04-22 16:12:36'),
+
 (5,'g','bbb','核心肌群訓練系統','ViPR','加強關節和核心肌肉的穩定性，提升肌肉的爆發力! 台灣之光王建民進行各種動作，利用此器材訓練不同的肌肉群，幫助他加強肩膀旋轉肌和腿部的肌肉做為身體平衡、增進投球動作的協調性。帶給他更正確的投球感覺。',25,'ADMIN','2018-04-22 01:36:05',NULL,'2018-04-22 16:12:39');
 
 /*Table structure for table `COURSE_PRICE` */
@@ -109,8 +115,10 @@ CREATE TABLE `INBODY` (
 /*Data for the table `INBODY` */
 
 insert  into `INBODY`(`ID`,`WEIGHT`,`MUSCLE_MASS`,`TBW`,`PROTEINS`,`MINERALS`,`BONE_CONTENT`,`PBF`,`VFL`,`BMR`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
-(2,3.40,5.60,7.80,9.11,10.12,13.14,15.16,17.18,19.21,'ADMIN','2018-04-29 16:57:31','ADMIN',NULL),
-(3,3.40,5.60,7.80,9.11,10.12,13.14,15.16,17.18,19.21,'ADMIN','2018-04-29 17:03:20','ADMIN',NULL);
+
+(2,'3.40','5.60','7.80','9.11','10.12','13.14','15.16','17.18','19.21','ADMIN','2018-04-29 16:57:31','ADMIN',NULL),
+
+(3,'3.40','5.60','7.80','9.11','10.12','13.14','15.16','17.18','19.21','ADMIN','2018-04-29 17:03:20','ADMIN',NULL);
 
 /*Table structure for table `MEMBER` */
 
@@ -120,6 +128,7 @@ CREATE TABLE `MEMBER` (
   `ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '編號(PK)',
   `ACCOUNT` varchar(50) NOT NULL COMMENT '帳號 (信箱)',
   `PASSWORD` varchar(50) NOT NULL COMMENT '密碼',
+  `ROLE` tinyint(1) NOT NULL DEFAULT '0' COMMENT '角色 (0:會員, 1:教練)',
   `NAME` varchar(50) NOT NULL COMMENT '姓名',
   `SEX` tinyint(1) NOT NULL COMMENT '性別 (0:女, 1:男)',
   `BIRTHDAY` datetime NOT NULL COMMENT '生日',
@@ -134,15 +143,29 @@ CREATE TABLE `MEMBER` (
   `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `UK_MEMBER` (`ACCOUNT`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='會員資訊';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='會員資訊';
 
 /*Data for the table `MEMBER` */
 
-insert  into `MEMBER`(`ID`,`ACCOUNT`,`PASSWORD`,`NAME`,`SEX`,`BIRTHDAY`,`PHONE`,`ADDR`,`PHOTO`,`REMARK`,`POINT`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
-(1,'william','e10adc3949ba59abbe56e057f20f883e','wei ming',1,'1988-01-17 23:29:33','0980127131','新竹縣湖口鄉','d:/photo001','test1',100,'ADMIN','2018-04-21 18:15:02','ADMIN','2018-04-25 19:55:09'),
-(2,'ocean','e10adc3949ba59abbe56e057f20f883e','yang',1,'1992-11-19 23:29:54','0980123456','台北市','d:/photo002','test2',200,'ADMIN','2018-04-21 21:19:16',NULL,'2018-04-25 19:55:10'),
-(3,'johnson','e10adc3949ba59abbe56e057f20f883e','kuo chia',1,'1985-12-28 23:30:28','0911222333','新北市','d:/photo003','test3',5000,'ADMIN','2018-04-22 01:38:51',NULL,'2018-04-25 19:55:14'),
-(4,'帳號','密碼','Lee',1,'2018-04-04 16:00:00','0980127131','台北市士林區','D:\\image005','備註',NULL,'SYSTEM','2018-04-23 13:11:49','ADMIN','2018-04-28 21:06:40');
+insert  into `MEMBER`(`ID`,`ACCOUNT`,`PASSWORD`,`ROLE`,`NAME`,`SEX`,`BIRTHDAY`,`PHONE`,`ADDR`,`PHOTO`,`REMARK`,`POINT`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
+(1,'william','e10adc3949ba59abbe56e057f20f883e',0,'wei ming',1,'1988-01-17 23:29:33','0980127131','新竹縣湖口鄉','d:/photo001','test1','100','ADMIN','2018-04-21 18:15:02','ADMIN','2018-04-25 19:55:09'),
+
+(2,'ocean','e10adc3949ba59abbe56e057f20f883e',0,'yang',1,'1992-11-19 23:29:54','0980123456','台北市','d:/photo002','test2','200','ADMIN','2018-04-21 21:19:16',NULL,'2018-04-25 19:55:10'),
+
+(3,'johnson','e10adc3949ba59abbe56e057f20f883e',0,'kuo chia',1,'1985-12-28 23:30:28','0911222333','新北市','d:/photo003','test3','5000','ADMIN','2018-04-22 01:38:51',NULL,'2018-04-25 19:55:14'),
+
+(4,'帳號','密碼',0,'Lee',1,'2018-04-04 16:00:00','0980127131','台北市士林區','D:\\image005','備註',NULL,'SYSTEM','2018-04-23 13:11:49','ADMIN','2018-04-28 21:06:40'),
+
+(5,'aa@gmail.com','e10adc3949ba59abbe56e057f20f883e',0,'li',0,'2018-04-04 00:00:00','0911223344','asdfg',NULL,NULL,'0','SYSTEM','2018-04-29 21:51:32','ADMIN',NULL),
+
+(6,'abc123@gmail.com','e10adc3949ba59abbe56e057f20f883e',0,'name',1,'2018-05-01 00:00:00','0911223344','台北市',NULL,NULL,'0','SYSTEM','2018-05-01 03:37:10','ADMIN',NULL),
+
+(7,'aaa111@yahoo.com.tw','96e79218965eb72c92a549dd5a330112',0,'James',1,'1992-01-21 00:00:00','0999887766','地址',NULL,NULL,'0','SYSTEM','2018-05-01 16:44:46','ADMIN',NULL),
+
+(8,'aaa@yahoo.com.tw','e10adc3949ba59abbe56e057f20f883e',0,'Lee',1,'2018-05-01 00:00:00','0911223344','taipei',NULL,NULL,'0','SYSTEM','2018-05-06 12:55:46','ADMIN',NULL),
+
+(9,'trainer01@gmail.com','e10adc3949ba59abbe56e057f20f883e',1,'葉問',1,'1893-01-01 13:12:32','0955555555','香港','d:\\trainer01','詠春','0','ADMIN','2018-05-06 13:14:00','ADMIN',NULL);
 
 /*Table structure for table `MEMBER_CREDIT` */
 
@@ -187,6 +210,7 @@ CREATE TABLE `MEMBER_INBODY` (
 /*Data for the table `MEMBER_INBODY` */
 
 insert  into `MEMBER_INBODY`(`ID`,`MEMBER_ID`,`INBODY_ID`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
 (2,1,3,'ADMIN','2018-04-29 17:03:21','ADMIN',NULL);
 
 /*Table structure for table `MEMBER_SCHEDULE` */
@@ -229,11 +253,16 @@ CREATE TABLE `PRICE` (
 /*Data for the table `PRICE` */
 
 insert  into `PRICE`(`ID`,`LOWER`,`UPPER`,`UNIT_PRICE`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
-(1,1,4,2000,'ADMIN','2018-04-21 21:15:20',NULL,NULL),
-(2,5,8,1800,'ADMIN','2018-04-21 21:15:32',NULL,NULL),
-(3,9,12,1600,'ADMIN','2018-04-21 21:16:27',NULL,NULL),
-(4,13,16,1400,'ADMIN','2018-04-21 21:16:59',NULL,NULL),
-(5,17,-1,1200,'ADMIN','2018-04-21 21:17:27',NULL,NULL);
+
+(1,1,4,'2000','ADMIN','2018-04-21 21:15:20',NULL,NULL),
+
+(2,5,8,'1800','ADMIN','2018-04-21 21:15:32',NULL,NULL),
+
+(3,9,12,'1600','ADMIN','2018-04-21 21:16:27',NULL,NULL),
+
+(4,13,16,'1400','ADMIN','2018-04-21 21:16:59',NULL,NULL),
+
+(5,17,-1,'1200','ADMIN','2018-04-21 21:17:27',NULL,NULL);
 
 /*Table structure for table `SCHEDULE` */
 
@@ -253,6 +282,7 @@ CREATE TABLE `SCHEDULE` (
 /*Data for the table `SCHEDULE` */
 
 insert  into `SCHEDULE`(`ID`,`START_DATETIME`,`END_DATETIME`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
 (1,'2018-04-01 18:00:00','2018-04-01 20:00:00','ADMIN','2018-04-22 03:48:01',NULL,NULL);
 
 /*Table structure for table `SCHEDULE_COURSE` */
@@ -317,7 +347,9 @@ CREATE TABLE `TRAINER` (
 /*Data for the table `TRAINER` */
 
 insert  into `TRAINER`(`ID`,`NAME`,`SEX`,`PHOTO`,`EXPERIENCE`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
 (1,'葉西付',1,NULL,'詠春第十六代掌門','ADMIN','2018-04-22 03:46:05',NULL,'2018-04-22 04:48:16'),
+
 (2,'潘若迪',1,NULL,NULL,'ADMIN','2018-04-22 03:46:21',NULL,'2018-04-22 04:48:41');
 
 /*Table structure for table `TRAINER_COURSE` */
@@ -342,7 +374,9 @@ CREATE TABLE `TRAINER_COURSE` (
 /*Data for the table `TRAINER_COURSE` */
 
 insert  into `TRAINER_COURSE`(`ID`,`TRAINER_ID`,`COURSE_ID`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
 (1,1,1,'ADMIN','2018-04-22 03:57:31',NULL,'2018-04-29 17:01:14'),
+
 (2,2,1,'ADMIN','2018-04-22 03:57:45',NULL,'2018-04-29 17:01:17');
 
 /* Trigger structure for table `COURSE` */
@@ -386,7 +420,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_COURSE#PRICE_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_COURSE#PRICE_BI` BEFORE INSERT ON `COURSE_PRICE` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -412,7 +448,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_CREDIT_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_CREDIT_BI` BEFORE INSERT ON `CREDIT` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -425,7 +463,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_CREDIT_BU` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_CREDIT_BU` BEFORE UPDATE ON `CREDIT` FOR EACH ROW BEGIN
+
 	SET NEW.MODIFIED_DATETIME = NOW();
+
     END */$$
 
 
@@ -438,7 +478,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_INBODY_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_INBODY_BI` BEFORE INSERT ON `INBODY` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -451,7 +493,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_INBODY_BU` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_INBODY_BU` BEFORE UPDATE ON `INBODY` FOR EACH ROW BEGIN
+
 	SET NEW.MODIFIED_DATETIME = NOW();
+
     END */$$
 
 
@@ -498,7 +542,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#CREDIT_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#CREDIT_BI` BEFORE INSERT ON `MEMBER_CREDIT` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -511,7 +557,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#CREDIT_BU` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#CREDIT_BU` BEFORE UPDATE ON `MEMBER_CREDIT` FOR EACH ROW BEGIN
+
 	SET NEW.MODIFIED_DATETIME = NOW();
+
     END */$$
 
 
@@ -524,7 +572,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#INBODY_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#INBODY_BI` BEFORE INSERT ON `MEMBER_INBODY` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -537,7 +587,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#INBODY_BU` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#INBODY_BU` BEFORE UPDATE ON `MEMBER_INBODY` FOR EACH ROW BEGIN
+
 	SET NEW.MODIFIED_DATETIME = NOW();
+
     END */$$
 
 
@@ -550,7 +602,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#SCHEDULE_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#SCHEDULE_BI` BEFORE INSERT ON `MEMBER_SCHEDULE` FOR EACH ROW BEGIN
+
 		SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -563,7 +617,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#SCHEDULE_BU` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#SCHEDULE_BU` BEFORE UPDATE ON `MEMBER_SCHEDULE` FOR EACH ROW BEGIN
+
 		SET NEW.MODIFIED_DATETIME = NOW();
+
     END */$$
 
 
@@ -628,7 +684,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_SCHEDULE#COURSE_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_SCHEDULE#COURSE_BI` BEFORE INSERT ON `SCHEDULE_COURSE` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -654,7 +712,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_SCHEDULE#TRAINER_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_SCHEDULE#TRAINER_BI` BEFORE INSERT ON `SCHEDULE_TRAINER` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
@@ -710,7 +770,9 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_TRAINER#COURSE_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_TRAINER#COURSE_BI` BEFORE INSERT ON `TRAINER_COURSE` FOR EACH ROW BEGIN
+
 	SET NEW.CREATED_DATETIME = NOW();
+
     END */$$
 
 
