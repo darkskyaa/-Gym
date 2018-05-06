@@ -3,7 +3,7 @@
 
 	<Resource name="gym" type="javax.sql.DataSource"
 		username="root"
-		password="0000"
+		password="45683968"
 		driverClassName="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/GYM"
 		connectionProperties="useSSL=true;useUnicode=yes;characterEncoding=utf8;"
