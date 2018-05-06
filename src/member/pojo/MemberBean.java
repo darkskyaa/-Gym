@@ -15,6 +15,7 @@ public class MemberBean extends CoreBean {
 	private Integer id;
 	private String account;
 	private String password;
+	private Integer role;
 	private String name;
 	private Integer sex;
 	private Timestamp birthday;
@@ -66,6 +67,20 @@ public class MemberBean extends CoreBean {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	/**
+	 * @return the role
+	 */
+	public Integer getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(Integer role) {
+		this.role = role;
 	}
 
 	/**

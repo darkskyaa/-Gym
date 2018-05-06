@@ -21,18 +21,19 @@ public class MemberMapper implements RowMapper<MemberBean> {
 		member.setId(rs.getInt(1));
 		member.setAccount(rs.getString(2));
 		member.setPassword(rs.getString(3));
-		member.setName(rs.getString(4));
-		member.setSex(rs.getInt(5));
-		member.setBirthday(rs.getTimestamp(6));
-		member.setPhone(rs.getString(7));
-		member.setAddr(rs.getString(8));
-		member.setPhone(rs.getString(9));
-		member.setRemark(rs.getString(10));
-		member.setPoint(rs.getInt(11));
-		member.setCreator(rs.getString(12));
-		member.setCreatedDatetime(rs.getTimestamp(13));
-		member.setModifier(rs.getString(14));
-		member.setModifiedDatetime(rs.getTimestamp(15));
+		member.setRole(rs.getInt(4));
+		member.setName(rs.getString(5));
+		member.setSex(rs.getInt(6));
+		member.setBirthday(rs.getTimestamp(7));
+		member.setPhone(rs.getString(8));
+		member.setAddr(rs.getString(9));
+		member.setPhone(rs.getString(10));
+		member.setRemark(rs.getString(11));
+		member.setPoint(rs.getInt(12));
+		member.setCreator(rs.getString(13));
+		member.setCreatedDatetime(rs.getTimestamp(14));
+		member.setModifier(rs.getString(15));
+		member.setModifiedDatetime(rs.getTimestamp(16));
 		return member;
 	}
 }
