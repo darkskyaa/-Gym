@@ -1,10 +1,12 @@
 package inbody.service;
 
 import static util.CommonUtil.checkInbody;
+import static inbody.enums.InbodyStatus.*;
 
 import java.util.List;
 
 import inbody.dao.InbodyDao;
+import inbody.enums.InbodyStatus;
 import inbody.pojo.InbodyBean;
 import member.pojo.MemberBean;
 
@@ -46,6 +48,16 @@ public class InbodyService {
 			logger.error(e.getMessage());
 		}
 		return resultMessage.toString();
+	}
+	
+	@Transactional
+	public InbodyStatus update(MemberBean member) {
+		int result = inbodyDao.update(member.getId(), member.getInbody());
+		if (result > 0) {
+			return SUCCESS; 
+		} else {
+			return FAILURE;
+		}
 	}
 	
 	public InbodyBean selectByMemberId(Integer memberId) {

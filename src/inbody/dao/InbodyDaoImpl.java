@@ -40,6 +40,24 @@ public class InbodyDaoImpl implements InbodyDao {
 	}
 	
 	@Override
+	public int update(Integer memberId, InbodyBean inbody) {
+		String sql = "update INBODY set "
+				+ "WEIGHT = ?,"
+				+ "MUSCLE_MASS = ?,"
+				+ "TBW = ?,"
+				+ "PROTEINS = ?,"
+				+ "MINERALS = ?,"
+				+ "BONE_CONTENT = ?,"
+				+ "PBF = ?,"
+				+ "VFL = ?,"
+				+ "BMR = ?,"
+				+ "MODIFIER = 'SYSTEM'"
+				+ "where ID = (select INBODY_ID from MEMBER_INBODY where MEMBER_ID = ?)";
+		return jdbcTemplate.update(sql, inbody.getWeight(), inbody.getMuscleMass(), inbody.getTbw(), inbody.getProteins()
+				, inbody.getMinerals(), inbody.getBoneContent(), inbody.getPbf(), inbody.getVfl(), inbody.getBmr(), memberId);
+	}
+	
+	@Override
 	public List<InbodyBean> selectByMemberId(Integer memberId) {
 		String sql = "select i.* from MEMBER_INBODY mi left join INBODY i on mi.INBODY_ID = i.ID where mi.MEMBER_ID = ? order by i.CREATED_DATETIME desc";
 		List<InbodyBean> list = jdbcTemplate.query(sql, new Object[]{memberId}, new InbodyMapper()); 
