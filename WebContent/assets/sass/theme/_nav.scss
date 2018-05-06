@@ -56,17 +56,13 @@
         }
         > li {
             float: right;
-            background-color: transparent;
+            background-color: transparent; 
             padding: 1.5rem;
             margin: 0;
-            &:hover {
-                color: #fff;
-                background: #76b852;
-                /* fallback for old browsers */
-                background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-                background: -moz-linear-gradient(right, #76b852, #8DC26F);
-                background: -o-linear-gradient(right, #76b852, #8DC26F);
-                background: linear-gradient(to left, #76b852, #8DC26F);
+            color: #fff;
+            &:hover, &.active {
+                color: #76b852;
+                background: #fff;
             }
             > ul {
                 display: none;
