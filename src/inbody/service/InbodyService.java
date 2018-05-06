@@ -1,6 +1,5 @@
 package inbody.service;
 
-import static util.CommonUtil.checkInbody;
 import static inbody.enums.InbodyStatus.*;
 
 import java.util.List;
@@ -26,28 +25,24 @@ public class InbodyService {
 	private RelationDao memberInbodyDao;
 	
 	@Transactional
-	public String add(MemberBean member) {
+	public InbodyStatus add(MemberBean member) {
 		InbodyBean inbody = member.getInbody();
-		StringBuilder resultMessage = checkInbody(inbody, false);
 		try {
-			if (resultMessage.toString().equals("")) {
-				Integer id = inbodyDao.insert(inbody);
+			Integer id = inbodyDao.insert(inbody);
+			if (id != null && id > 0) {
+				id = memberInbodyDao.insert(member.getId(), id);
 				if (id != null && id > 0) {
-					id = memberInbodyDao.insert(member.getId(), id);
-					if (id != null && id > 0) {
-						resultMessage.append("add success");
-					} else {
-						throw new Exception("insert failure, rollback");
-					}
+					return SUCCESS;
 				} else {
-					resultMessage.append("add failure");
+					throw new Exception("insert MEMBER_INBODY failure, rollback");
 				}
+			} else {
+				return FAILURE;
 			}
 		} catch (Exception e) {
-			resultMessage.append("add failure");
 			logger.error(e.getMessage());
+			return FAILURE;
 		}
-		return resultMessage.toString();
 	}
 	
 	@Transactional

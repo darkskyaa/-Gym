@@ -4,9 +4,6 @@ import inbody.enums.InbodyStatus;
 import inbody.pojo.InbodyBean;
 import inbody.service.InbodyService;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import member.pojo.MemberBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +21,9 @@ public class InbodyController {
 	private InbodyService inbodyService;
 
 	@PostMapping("add")
-	public Map<String, String> add(@RequestBody MemberBean member) {
-		Map<String, String> resultMap = new HashMap<>();
-		resultMap.put("msg", inbodyService.add(member));
-		return resultMap;
+	public ModelMap add(@RequestBody MemberBean member) {
+		InbodyStatus status = inbodyService.add(member);
+		return getResultMap(status);
 	}
 	
 	@GetMapping("findByMemberId")
@@ -38,6 +34,10 @@ public class InbodyController {
 	@PostMapping("modify")
 	public ModelMap update(@RequestBody MemberBean member) {
 		InbodyStatus status = inbodyService.update(member);
+		return getResultMap(status);
+	}
+	
+	private ModelMap getResultMap(InbodyStatus status) {
 		ModelMap resultMap = new ModelMap();
 		resultMap.put("code", status.getCode());
 		resultMap.put("msg", status);
