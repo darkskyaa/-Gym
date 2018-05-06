@@ -16,6 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import core.dao.RelationDao;
 
+/**
+ * The service of Inbody subsystem
+ * @date 2018-04-29
+ * @category Inbody
+ * @author William
+ */
 @Service
 public class InbodyService {
 	private static Logger logger = Logger.getLogger(InbodyService.class);
@@ -24,6 +30,11 @@ public class InbodyService {
 	@Autowired
 	private RelationDao memberInbodyDao;
 	
+	/**
+	 * The service method for adding a inbody
+	 * @param member : member object with member id and new inbody information
+	 * @return result enum for adding
+	 */
 	@Transactional
 	public InbodyStatus add(MemberBean member) {
 		InbodyBean inbody = member.getInbody();
@@ -45,6 +56,11 @@ public class InbodyService {
 		}
 	}
 	
+	/**
+	 * The service method for updating inbody
+	 * @param member : member object with member id and new inbody information
+	 * @return result enum for updating
+	 */
 	@Transactional
 	public InbodyStatus update(MemberBean member) {
 		int result = inbodyDao.update(member.getId(), member.getInbody());
@@ -55,6 +71,11 @@ public class InbodyService {
 		}
 	}
 	
+	/**
+	 * The service method for getting a inbody information
+	 * @param memberId : member id
+	 * @return pojo object of inbody
+	 */
 	public InbodyBean selectByMemberId(Integer memberId) {
 		List<InbodyBean> list = inbodyDao.selectByMemberId(memberId);
 		if (list != null && list.size() > 0) {

@@ -2,8 +2,8 @@ package inbody.enums;
 
 /**
  * The Enum of Inbody subsystem
- * @date 2018-04-29
- * @category Member
+ * @date 2018-05-06
+ * @category Inbody
  * @author William
  */
 public enum InbodyStatus {

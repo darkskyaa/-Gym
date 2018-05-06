@@ -7,6 +7,12 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+/**
+ * The mapper of Inbody subsystem
+ * @date 2018-04-29
+ * @category Inbody
+ * @author William
+ */
 public class InbodyMapper implements RowMapper<InbodyBean> {
 
 	@Override

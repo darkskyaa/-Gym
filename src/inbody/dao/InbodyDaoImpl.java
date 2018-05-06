@@ -12,6 +12,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+/**
+ * The dao implementation of Inbody subsystem
+ * @date 2018-04-29
+ * @category Inbody
+ * @author William
+ */
 @Repository
 public class InbodyDaoImpl implements InbodyDao {
 	@Autowired
