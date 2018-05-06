@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `COURSE`;
 
 CREATE TABLE `COURSE` (
   `ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '編號(PK)',
-  `TYPE` char(1) NOT NULL COMMENT '種類 (p:personal, g:group)',
   `CATEGORY` varchar(10) NOT NULL COMMENT '類別',
   `NAME` varchar(100) NOT NULL COMMENT '課程中文名稱',
   `NAME_ENG` varchar(100) NOT NULL COMMENT '課程英文名稱',
+  `TEACHER_NAME` varchar(50) NOT NULL DEFAULT 'Jason' COMMENT '老師名字',
   `FEATURE` varchar(1000) DEFAULT NULL COMMENT '特色',
   `NUM_LIMIT` int(5) NOT NULL COMMENT '學生人數上限',
   `CREATOR` varchar(50) NOT NULL DEFAULT 'ADMIN' COMMENT '建立者',
@@ -38,17 +38,17 @@ CREATE TABLE `COURSE` (
 
 /*Data for the table `COURSE` */
 
-insert  into `COURSE`(`ID`,`TYPE`,`CATEGORY`,`NAME`,`NAME_ENG`,`FEATURE`,`NUM_LIMIT`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+insert  into `COURSE`(`ID`,`CATEGORY`,`NAME`,`NAME_ENG`,`TEACHER_NAME`,`FEATURE`,`NUM_LIMIT`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
 
-(1,'g','aaa','拳擊有氧','Boxing','最早是由一名黑人的搏擊世界冠軍創造的，近兩年才在國內發展起來的。其形式是將拳擊、空手道、跆拳道、功夫，甚至一些舞蹈動作混合在一起，在激烈的音樂中，進行一些拳擊和跆拳道的基本拳法和腿法的運動。健身者在出拳、踢腿的過程中，隨著音樂揮動雙拳，動作剛勁有力，讓健身者盡情地發洩，盡情地出汗，並在不知不覺中減掉全身多餘的脂肪。',10,'ADMIN','2018-04-22 01:27:51',NULL,'2018-04-22 16:12:22'),
+(1,'aaa','拳擊有氧','Boxing','Jason','最早是由一名黑人的搏擊世界冠軍創造的，近兩年才在國內發展起來的。其形式是將拳擊、空手道、跆拳道、功夫，甚至一些舞蹈動作混合在一起，在激烈的音樂中，進行一些拳擊和跆拳道的基本拳法和腿法的運動。健身者在出拳、踢腿的過程中，隨著音樂揮動雙拳，動作剛勁有力，讓健身者盡情地發洩，盡情地出汗，並在不知不覺中減掉全身多餘的脂肪。',10,'ADMIN','2018-04-22 01:27:51',NULL,'2018-04-22 16:12:22'),
 
-(2,'g','bbb','拳輪','Krankcycle','全球最新流行上半身運動器材。飛輪創始者Johnny G發明的最新上半身運動器材同時用到手臂、胸部、背部、腰部等多處! 全台首見!目前由World Gym獨家引進!',15,'ADMIN','2018-04-22 01:28:42',NULL,'2018-04-22 16:11:57'),
+(2,'bbb','拳輪','Krankcycle','Jason','全球最新流行上半身運動器材。飛輪創始者Johnny G發明的最新上半身運動器材同時用到手臂、胸部、背部、腰部等多處! 全台首見!目前由World Gym獨家引進!',15,'ADMIN','2018-04-22 01:28:42',NULL,'2018-04-22 16:11:57'),
 
-(3,'g','bbb','多功式訓練系統','Purmotion','全新多功性肌力訓練系統，刮起運動新旋風! 提供了傳統器材如槓鈴以及啞鈴所無法比擬的訓練面向，看似簡單的變換身體動作，其實已經是肌力方面的挑戰。如果你要尋求體能表現的極限，這是一套很棒的訓練系統。不只可增進核心的力量，核心的強化可幫助避免受傷，增進身體姿勢正確，對日常生活功能性表現有很大助益；也可結合負荷重的方式，進行肌力、肌耐力、爆發力、協調性等的訓練；更可模擬多種競技運動姿勢、加強運動表現。',20,'ADMIN','2018-04-22 01:32:03',NULL,'2018-04-22 16:12:00'),
+(3,'bbb','多功式訓練系統','Purmotion','Jason','全新多功性肌力訓練系統，刮起運動新旋風! 提供了傳統器材如槓鈴以及啞鈴所無法比擬的訓練面向，看似簡單的變換身體動作，其實已經是肌力方面的挑戰。如果你要尋求體能表現的極限，這是一套很棒的訓練系統。不只可增進核心的力量，核心的強化可幫助避免受傷，增進身體姿勢正確，對日常生活功能性表現有很大助益；也可結合負荷重的方式，進行肌力、肌耐力、爆發力、協調性等的訓練；更可模擬多種競技運動姿勢、加強運動表現。',20,'ADMIN','2018-04-22 01:32:03',NULL,'2018-04-22 16:12:00'),
 
-(4,'g','aaa','懸吊訓練系統','TRX','TRX是一種利用你自己本身的體重以及重力，來增強肌力，平衡，協調，柔軟度，核心以及關節穩定度，來達到預防傷害的一種訓練。懸吊訓練課程透過各種運動可以增進核心力量，藉著運動所創造出的不穩定的要素來讓核心自然而然地提供平衡以及協調性。想像一下，增強核心的力量以及穩定度會對你的日常表現以及生活方式有多大的助益!',5,'ADMIN','2018-04-22 01:34:51',NULL,'2018-04-22 16:12:36'),
+(4,'aaa','懸吊訓練系統','TRX','Jason','TRX是一種利用你自己本身的體重以及重力，來增強肌力，平衡，協調，柔軟度，核心以及關節穩定度，來達到預防傷害的一種訓練。懸吊訓練課程透過各種運動可以增進核心力量，藉著運動所創造出的不穩定的要素來讓核心自然而然地提供平衡以及協調性。想像一下，增強核心的力量以及穩定度會對你的日常表現以及生活方式有多大的助益!',5,'ADMIN','2018-04-22 01:34:51',NULL,'2018-04-22 16:12:36'),
 
-(5,'g','bbb','核心肌群訓練系統','ViPR','加強關節和核心肌肉的穩定性，提升肌肉的爆發力! 台灣之光王建民進行各種動作，利用此器材訓練不同的肌肉群，幫助他加強肩膀旋轉肌和腿部的肌肉做為身體平衡、增進投球動作的協調性。帶給他更正確的投球感覺。',25,'ADMIN','2018-04-22 01:36:05',NULL,'2018-04-22 16:12:39');
+(5,'bbb','核心肌群訓練系統','ViPR','Jason','加強關節和核心肌肉的穩定性，提升肌肉的爆發力! 台灣之光王建民進行各種動作，利用此器材訓練不同的肌肉群，幫助他加強肩膀旋轉肌和腿部的肌肉做為身體平衡、增進投球動作的協調性。帶給他更正確的投球感覺。',25,'ADMIN','2018-04-22 01:36:05',NULL,'2018-04-22 16:12:39');
 
 /*Table structure for table `COURSE_PRICE` */
 
@@ -234,6 +234,27 @@ CREATE TABLE `MEMBER_SCHEDULE` (
 
 /*Data for the table `MEMBER_SCHEDULE` */
 
+/*Table structure for table `MEMBER_TRAINER` */
+
+DROP TABLE IF EXISTS `MEMBER_TRAINER`;
+
+CREATE TABLE `MEMBER_TRAINER` (
+  `ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '編號(PK)',
+  `MEMBER_ID` int(10) NOT NULL COMMENT '會員編號',
+  `TRAINER_ID` int(10) NOT NULL COMMENT '教練編號',
+  `CREATOR` varchar(50) NOT NULL DEFAULT 'ADMIN' COMMENT '建立者',
+  `CREATED_DATETIME` datetime NOT NULL COMMENT '建立日期時間',
+  `MODIFIER` varchar(50) DEFAULT 'ADMIN' COMMENT '最後修改者',
+  `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
+  PRIMARY KEY (`ID`),
+  KEY `FK_MEMBER#TRAINER_MEMBER` (`MEMBER_ID`),
+  KEY `FK_MEMBER#TRAINER_TRAINER` (`TRAINER_ID`),
+  CONSTRAINT `FK_MEMBER#TRAINER_MEMBER` FOREIGN KEY (`MEMBER_ID`) REFERENCES `MEMBER` (`ID`),
+  CONSTRAINT `FK_MEMBER#TRAINER_TRAINER` FOREIGN KEY (`TRAINER_ID`) REFERENCES `TRAINER` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='關聯表 - 會員 <-> 教練 (會員擁有私人教練課之資訊)';
+
+/*Data for the table `MEMBER_TRAINER` */
+
 /*Table structure for table `PRICE` */
 
 DROP TABLE IF EXISTS `PRICE`;
@@ -306,26 +327,32 @@ CREATE TABLE `SCHEDULE_COURSE` (
 
 /*Data for the table `SCHEDULE_COURSE` */
 
-/*Table structure for table `SCHEDULE_TRAINER` */
+/*Table structure for table `SKILL` */
 
-DROP TABLE IF EXISTS `SCHEDULE_TRAINER`;
+DROP TABLE IF EXISTS `SKILL`;
 
-CREATE TABLE `SCHEDULE_TRAINER` (
+CREATE TABLE `SKILL` (
   `ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '編號(PK)',
-  `SCHEDULE_ID` int(10) NOT NULL COMMENT '課表編號',
-  `TRAINER_ID` int(10) NOT NULL COMMENT '教練編號',
+  `NAME` varchar(50) NOT NULL COMMENT '技能名稱',
+  `REMARK` varchar(200) DEFAULT NULL COMMENT '備註',
   `CREATOR` varchar(50) NOT NULL DEFAULT 'ADMIN' COMMENT '建立者',
   `CREATED_DATETIME` datetime NOT NULL COMMENT '建立日期時間',
   `MODIFIER` varchar(50) DEFAULT 'ADMIN' COMMENT '最後修改者',
   `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
-  PRIMARY KEY (`ID`),
-  KEY `FK_SCHEDULE#TRAINER_SCHEDULE` (`SCHEDULE_ID`),
-  KEY `FK_SCHEDULE#TRAINER_TRAINER` (`TRAINER_ID`),
-  CONSTRAINT `FK_SCHEDULE#TRAINER_SCHEDULE` FOREIGN KEY (`SCHEDULE_ID`) REFERENCES `SCHEDULE` (`ID`),
-  CONSTRAINT `FK_SCHEDULE#TRAINER_TRAINER` FOREIGN KEY (`TRAINER_ID`) REFERENCES `TRAINER` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='關聯表 - 課表 <-> 教練';
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='技能資訊';
 
-/*Data for the table `SCHEDULE_TRAINER` */
+/*Data for the table `SKILL` */
+
+insert  into `SKILL`(`ID`,`NAME`,`REMARK`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
+
+(1,'拳擊','AAA','ADMIN','2018-05-06 13:57:59','ADMIN','2018-05-06 13:58:25'),
+
+(2,'減脂雕塑','BBB','ADMIN','2018-05-06 13:58:21','ADMIN',NULL),
+
+(3,'TRX','CCC','ADMIN','2018-05-06 13:58:31','ADMIN',NULL),
+
+(4,'柔道','DDD','ADMIN','2018-05-06 13:58:36','ADMIN',NULL);
 
 /*Table structure for table `TRAINER` */
 
@@ -352,32 +379,26 @@ insert  into `TRAINER`(`ID`,`NAME`,`SEX`,`PHOTO`,`EXPERIENCE`,`CREATOR`,`CREATED
 
 (2,'潘若迪',1,NULL,NULL,'ADMIN','2018-04-22 03:46:21',NULL,'2018-04-22 04:48:41');
 
-/*Table structure for table `TRAINER_COURSE` */
+/*Table structure for table `TRAINER_SKILL` */
 
-DROP TABLE IF EXISTS `TRAINER_COURSE`;
+DROP TABLE IF EXISTS `TRAINER_SKILL`;
 
-CREATE TABLE `TRAINER_COURSE` (
+CREATE TABLE `TRAINER_SKILL` (
   `ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '編號(PK)',
   `TRAINER_ID` int(10) NOT NULL COMMENT '教練編號',
-  `COURSE_ID` int(10) NOT NULL COMMENT '課程編號',
+  `SKILL_ID` int(10) NOT NULL COMMENT '技能編號',
   `CREATOR` varchar(50) NOT NULL DEFAULT 'ADMIN' COMMENT '建立者',
   `CREATED_DATETIME` datetime NOT NULL COMMENT '建立日期時間',
   `MODIFIER` varchar(50) DEFAULT 'ADMIN' COMMENT '最後修改者',
   `MODIFIED_DATETIME` datetime DEFAULT NULL COMMENT '最後修改日期時間',
   PRIMARY KEY (`ID`),
-  KEY `FK_TRAINER#COURSE_TRAINER` (`TRAINER_ID`),
-  KEY `FK_TRAINER#COURSE_COURSE` (`COURSE_ID`),
-  CONSTRAINT `FK_TRAINER#COURSE_COURSE` FOREIGN KEY (`COURSE_ID`) REFERENCES `COURSE` (`ID`),
-  CONSTRAINT `FK_TRAINER#COURSE_TRAINER` FOREIGN KEY (`TRAINER_ID`) REFERENCES `TRAINER` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='關聯表 - 教練 <-> 課程 (僅用來表示教練的技能)';
+  KEY `FK_TRAINER#SKILL_TRAINER` (`TRAINER_ID`),
+  KEY `FK_TRAINER#SKILL_SKILL` (`SKILL_ID`),
+  CONSTRAINT `FK_TRAINER#SKILL_SKILL` FOREIGN KEY (`SKILL_ID`) REFERENCES `SKILL` (`ID`),
+  CONSTRAINT `FK_TRAINER#SKILL_TRAINER` FOREIGN KEY (`TRAINER_ID`) REFERENCES `TRAINER` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='關聯表 - 教練 <-> 技能';
 
-/*Data for the table `TRAINER_COURSE` */
-
-insert  into `TRAINER_COURSE`(`ID`,`TRAINER_ID`,`COURSE_ID`,`CREATOR`,`CREATED_DATETIME`,`MODIFIER`,`MODIFIED_DATETIME`) values 
-
-(1,1,1,'ADMIN','2018-04-22 03:57:31',NULL,'2018-04-29 17:01:14'),
-
-(2,2,1,'ADMIN','2018-04-22 03:57:45',NULL,'2018-04-29 17:01:17');
+/*Data for the table `TRAINER_SKILL` */
 
 /* Trigger structure for table `COURSE` */
 
@@ -386,11 +407,7 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_COURSE_BI` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_COURSE_BI` BEFORE INSERT ON `COURSE` FOR EACH ROW BEGIN
-	IF NEW.TYPE NOT IN('p', 'g') THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'value of `TYPE` must be "p" or "g"';
-	ELSE
 		SET NEW.CREATED_DATETIME = NOW();
-	END IF;
     END */$$
 
 
@@ -403,11 +420,7 @@ DELIMITER $$
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_COURSE_BU` */$$
 
 /*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_COURSE_BU` BEFORE UPDATE ON `COURSE` FOR EACH ROW BEGIN
-	IF NEW.TYPE NOT IN('p', 'g') THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'value of `TYPE` must be "p" or "g"';
-	ELSE
 		SET NEW.MODIFIED_DATETIME = NOW();
-	END IF;
     END */$$
 
 
@@ -625,6 +638,32 @@ DELIMITER $$
 
 DELIMITER ;
 
+/* Trigger structure for table `MEMBER_TRAINER` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#TRAINER_BI` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#TRAINER_BI` BEFORE INSERT ON `MEMBER_TRAINER` FOR EACH ROW BEGIN
+	SET NEW.CREATED_DATETIME = NOW();
+    END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `MEMBER_TRAINER` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_MEMBER#TRAINER_BU` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_MEMBER#TRAINER_BU` BEFORE UPDATE ON `MEMBER_TRAINER` FOR EACH ROW BEGIN
+	SET NEW.MODIFIED_DATETIME = NOW();
+    END */$$
+
+
+DELIMITER ;
+
 /* Trigger structure for table `PRICE` */
 
 DELIMITER $$
@@ -705,29 +744,27 @@ DELIMITER $$
 
 DELIMITER ;
 
-/* Trigger structure for table `SCHEDULE_TRAINER` */
+/* Trigger structure for table `SKILL` */
 
 DELIMITER $$
 
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_SCHEDULE#TRAINER_BI` */$$
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_SKILL_BI` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_SCHEDULE#TRAINER_BI` BEFORE INSERT ON `SCHEDULE_TRAINER` FOR EACH ROW BEGIN
-
-	SET NEW.CREATED_DATETIME = NOW();
-
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_SKILL_BI` BEFORE INSERT ON `SKILL` FOR EACH ROW BEGIN
+		SET NEW.CREATED_DATETIME = NOW();
     END */$$
 
 
 DELIMITER ;
 
-/* Trigger structure for table `SCHEDULE_TRAINER` */
+/* Trigger structure for table `SKILL` */
 
 DELIMITER $$
 
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_SCHEDULE#TRAINER_BU` */$$
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_SKILL_BU` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_SCHEDULE#TRAINER_BU` BEFORE UPDATE ON `SCHEDULE_TRAINER` FOR EACH ROW BEGIN
-	SET NEW.MODIFIED_DATETIME = NOW();
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_SKILL_BU` BEFORE UPDATE ON `SKILL` FOR EACH ROW BEGIN
+		SET NEW.MODIFIED_DATETIME = NOW();
     END */$$
 
 
@@ -763,28 +800,26 @@ DELIMITER $$
 
 DELIMITER ;
 
-/* Trigger structure for table `TRAINER_COURSE` */
+/* Trigger structure for table `TRAINER_SKILL` */
 
 DELIMITER $$
 
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_TRAINER#COURSE_BI` */$$
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_TRAINER#SKILL_BI` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_TRAINER#COURSE_BI` BEFORE INSERT ON `TRAINER_COURSE` FOR EACH ROW BEGIN
-
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_TRAINER#SKILL_BI` BEFORE INSERT ON `TRAINER_SKILL` FOR EACH ROW BEGIN
 	SET NEW.CREATED_DATETIME = NOW();
-
     END */$$
 
 
 DELIMITER ;
 
-/* Trigger structure for table `TRAINER_COURSE` */
+/* Trigger structure for table `TRAINER_SKILL` */
 
 DELIMITER $$
 
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_TRAINER#COURSE_BU` */$$
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `TRI_TRAINER#SKILL_BU` */$$
 
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_TRAINER#COURSE_BU` BEFORE UPDATE ON `TRAINER_COURSE` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `TRI_TRAINER#SKILL_BU` BEFORE UPDATE ON `TRAINER_SKILL` FOR EACH ROW BEGIN
 	SET NEW.MODIFIED_DATETIME = NOW();
     END */$$
 
